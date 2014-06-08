@@ -1,0 +1,1969 @@
+\documentclass[oneside,10pt,makeindex]{article}
+
+\usepackage{xspace} % you should use this one, like, all the time
+
+\usepackage[paperwidth=6in,paperheight=4in,margin=0.5in]{geometry}
+
+% siunitx = units, nicefrac = nicefrac macro, makeidx = index
+\usepackage{siunitx,nicefrac,makeidx}
+
+% for the hbar logo
+\usepackage{graphicx,wrapfig,bm}
+
+% for mathscr
+\usepackage{mathrsfs}
+
+% for mathfrak
+\usepackage{amsmath,amssymb}
+
+%\renewcommand{\emph}[1]{\textbf{#1}}
+%\renewcommand{\nicefrac}[2]{\ensuremath{\frac{#1}{#2}}}
+
+% for footnote behavior
+\usepackage[hang,flushmargin]{footmisc} 
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\renewcommand{\footnoterule}{}
+
+\usepackage{perpage}
+\MakePerPage{footnote}
+
+%%%% auto-generated cocktail snippets:
+%% SI: \SI{${1:(num)}}{${2:(unit)}} $0
+%% si: \si{$1} $0
+%% --: \item \SI{${1:(num)}}{${2:\oz}} $0
+%% adash: a~\si{\dash} $0
+%% dashes: ${1:(num)}~\si{\dashes} $0
+%% spritz: a~\si{\spritz} $0
+%% rinse: a~\si{\rinse} $0
+%% inline: \InlineCocktail{${1:(name)}} $0
+%% inline*: \InlineCocktail*{${1:(name)}} $0
+%% book: \BookTitle{${1:(title)}} $0
+%% stir: Stir ingredients with ice, $0
+%% stex: Stir ingredients except ${1:<ingredient>} with ice, $0
+%% shake: Shake ingredients with ice, $0
+%% shex: Shake ingredients except ${1:<ingredient>} with ice, $0
+%% dshake: Dry shake ingredients, then shake with ice, $0
+%% dshex: Dry shake ingredients except ${1:<ingredient>}, then shake with ice,
+%% $0
+%% strc: strain into a coupe
+%% strco: strain into an ice-filled Collins glass
+%% strconi: strain into a Collins glass
+%% stro: strain into an old fashioned glass
+%% strio: strain into an ice-filled old fashioned glass
+%% strIo: strain into an old fashioned glass with a single large ice cube
+%% strf: strain into a champagne flute
+%% tops: top with \soda
+%% topc: top with champagne
+%% gnw: garnish with $0
+%% gnlet: garnish with a lemon twist.
+%% gnot: garnish with an orange twist.
+%% gngt: garnish with a grapefruit twist.
+%% gntot: garnish with a thick orange twist.
+%% gnch: garnish with a cherry.
+%% gnlew: garnish with a lemon wheel.
+%% gnliw: garnish with a lime wheel.
+%% gnow: garniwh with an orange wheel.
+%% gngfw: garnish with a grapefruit wheel.
+%% gnms: garnish with a sprig of mint.
+%% gnles: garnish with a lemon slice.
+%% gnlis: garnish with a lime slice.
+%% ofg: old fashioned glass
+%% rocks: old fashioned glass
+%% benedictine: B\\'en\\'edictine
+%% bene: B\\'en\\'edictine
+%% angostura: Angostura bitters
+%% ango: Angostura bitters
+%% angor: Angostura orange bitters
+%% peychauds: Peychaud's bitters
+%% pey: Peychaud's bitters
+%% orbit: orange bitters
+%% rorbit: Regan's orange bitters
+%% forbit: Fee Brother's orange bitters
+%% curacao: cura\c cao
+%% cachaca: cacha\c ca
+%% oj: orange juice
+%% lej: lemon juice
+%% lij: lime juice
+%% gfj: grapefruit juice
+%% ss: simple syrup
+%% ew: 1~egg white
+
+%%%% helpful cocktail-mode yasnippets
+%%%% angle bracketed text (i.e. <text>) denotes field to be filled in
+%%%% underscore (_) denotes cursor position
+%%%% important ones:
+%% cocktail: cocktail environment skeleton
+%% ingredients: ingredients environment skeleton
+%% instructions: instructions environment skeleton
+%% SI: \SI{<num>}{<unit>} _
+%% --: \item \SI{<num>}{\oz} _
+%% -: \item [note: not actually one of mine]
+%% stir: Stir ingredients with ice, _
+%% stir-ex: Stir ingredients except <ingredient> with ice, _
+%% shake: Shake ingredients with ice, _
+%% shake-ex: Shake ingredients except <ingredient> with ice, _
+%%%% TODO
+%% strain-c: strain into a coupe_
+%% strain-co: strain into an ice-filled Collins glass_
+%% strain-ofg: strain into an old fashioned glass_
+%% strain-iofg: strain into an ice-filled old fashioned glass_
+%% strain-Iofg: strain into an old fashioned glass with a single large ice cube_
+%% garnish-lt: garnish with a lemon twist._
+%% garnish-ot: garnish with an orange twist._
+%% garnish-tlt: garnish with a thick lemon twist._
+%% garnish- ... you know, it occurs to me that I should write a script to
+%% generate these
+%%%% less important but still helpful ones:
+%% benedictine
+%% curacao
+%% cachaca
+%% angostura: Angostura bitters
+%% ofg: old fashioned glass
+
+
+\sisetup{%
+	range-phrase ={--},
+	range-units = single,
+	parse-numbers = false,
+%    detect-all, % siunitx commands take on surround font characteristics
+                 % although it's not entirely foolproof
+%    detect-family,
+}
+
+\DeclareSIUnit\oz{oz.}
+\DeclareSIUnit\part{part}
+\DeclareSIUnit\parts{parts}
+\DeclareSIUnit\dash{dash of}
+\DeclareSIUnit\dashes{dashes of}
+\DeclareSIUnit\drop{drop of}
+\DeclareSIUnit\drops{drops of}
+\DeclareSIUnit\splash{splash of}
+\DeclareSIUnit\tsp{tsp.}
+\DeclareSIUnit\Tbsp{Tbsp.}
+\DeclareSIUnit\spritz{spritz of}
+\DeclareSIUnit\spritzes{spritzes of}
+\DeclareSIUnit\rinse{rinse of}
+\DeclareSIUnit\cp{cp.}
+\DeclareSIUnit\cup{\,cup}
+\DeclareSIUnit\cups{\,cups}
+\DeclareSIUnit\qt{qt.}
+\DeclareSIUnit\inch{in.}
+\DeclareSIUnit\sprig{sprig of}
+\DeclareSIUnit\sprigs{sprigs of}
+
+\newcommand\soda{club soda\xspace}
+\newcommand\vs{V.\,S.\xspace}
+\newcommand\vsop{V.\,S.\,O.\,P.\xspace}
+\newcommand\vep{V.\,E.\,P.\xspace}
+\newcommand\vx{V.\,X.\xspace}
+\newcommand\age[1]{#1-year-old}
+\newcommand\orgeat{orgeat syrup\xspace}
+
+\newcommand\super[1]{$^\text{#1}$}
+
+%% starred version means fraction is preceeded by an integer (e.g. 1\half* = 1 1/2)
+\makeatletter
+\newcommand{\HalfNoSt@r}{\nicefrac{1}{2}}
+\newcommand{\HalfSt@r}{\HalfNoSt@r}
+\newcommand{\half}{%
+	\@ifstar%
+		{\HalfSt@r}%
+		{\HalfNoSt@r}%
+}
+\newcommand{\QuarterNoSt@r}{\nicefrac{1}{4}}
+\newcommand{\QuarterSt@r}{\QuarterNoSt@r}
+\newcommand{\quarter}{%
+	\@ifstar%
+		{\QuarterSt@r}%
+		{\QuarterNoSt@r}%
+}
+\newcommand{\ThreeQuartersNoSt@r}{\nicefrac{3}{4}}
+\newcommand{\ThreeQuartersSt@r}{\ThreeQuartersNoSt@r}
+\newcommand{\threequarters}{%
+	\@ifstar%
+		{\ThreeQuartersSt@r}%
+		{\ThreeQuartersNoSt@r}%
+}
+\newcommand{\ThirdNoSt@r}{\nicefrac{1}{3}}
+\newcommand{\ThirdSt@r}{\ThirdNoSt@r}
+\newcommand{\third}{%
+	\@ifstar%
+		{\ThirdSt@r}%
+		{\ThirdNoSt@r}%
+}
+\newcommand{\TwoThirdsNoSt@r}{\nicefrac{2}{3}}
+\newcommand{\TwoThirdsSt@r}{\TwoThirdsNoSt@r}
+\newcommand{\twothirds}{%
+	\@ifstar%
+		{\TwoThirdsSt@r}%
+		{\TwoThirdsNoSt@r}%
+}
+\newcommand{\EighthNoSt@r}{\nicefrac{1}{8}}
+\newcommand{\EighthSt@r}{\EighthNoSt@r}
+\newcommand{\eighth}{%
+	\@ifstar%
+		{\EighthSt@r}%
+		{\EighthNoSt@r}%
+}
+\makeatother
+
+\pagestyle{empty}
+
+%% index-related macros
+\renewcommand{\indexname}{\huge Cocktail Menu}
+\makeindex
+
+%% \printindex reverts to plain pagestyle, so redefine plain to supress unwanted behavior
+\usepackage{fancyhdr}
+\fancypagestyle{plain}{%
+	\fancyhf{}
+	\renewcommand{\headrulewidth}{0pt}
+	\renewcommand{\headheight}{0pt}
+}
+
+%% you can also change ``References'' to ``Bibliography" in article class
+%\renewcommmand{\refname}{Bibliography}
+%% and in report and book class, the opposite
+%\renewcommand{\bibname}{References}
+
+\newcommand{\CurrentCocktail}{}
+
+%\newcommand{\CocktailName}[1]{\index{#1}{\huge\textbf{#1}}}
+\newcommand{\CocktailName}[2][]{\index{#2}{\huge\textbf{#2}}\hfill\makebox{#1}}
+\makeatletter
+\newcommand{\InlineCocktailSt@r}[1]{%
+	\textsl{#1}%
+	\ignorespacesafterend
+}
+\newcommand{\InlineCocktailNoSt@r}[1]{%
+	\InlineCocktailSt@r{#1}%
+	%\index{#1}%
+	\index{\CurrentCocktail!#1}%
+}
+\newcommand{\InlineCocktail}{%
+	\@ifstar%
+		{\InlineCocktailSt@r}%
+		{\InlineCocktailNoSt@r}%
+}
+\makeatother
+
+%% optional argument gives the attribution
+\newenvironment{Cocktail}[2][]
+	{%
+		%\tt
+		\newpage%
+		\setlength{\parindent}{0pt}%
+		\CocktailName{#2}{#1}%
+		\renewcommand{\CurrentCocktail}{#2}
+		%CurrentCocktail=\CurrentCocktail
+	}
+    {}
+% 	{%
+% 		\vfill
+% 		%% prints page number for determining printing range--omit when printing
+% 		%\hfill\arabic{page}\hfill%
+% 	}
+
+
+\newcommand\Attribution[1]{\raisebox{4ex}[0pt][0pt]{#1}}
+
+ \newcommand\HBarLogo{\makebox{\includegraphics[keepaspectratio=true,height=11pt]{the-hbar.pdf}}}
+
+\newcommand\EOLogo{\makebox{\includegraphics[keepaspectratio=true,height=14pt]{employees-only-logo.pdf}}}
+
+\newcommand\MattLinzmeierLogo{\makebox{\ensuremath{m\ell}}}
+
+%% Savoy Cocktail Book
+%\newcommand\SavoyLogo{\raisebox{1ex}{$\mathscr{S}$}\!{$\mathscr{C}$}\raisebox{-1ex}{$\mathscr{B}$}}
+\newcommand\SavoyLogo{\textit{\raisebox{1ex}{S}\!C\raisebox{-1ex}{B}}}
+
+%% Milk and Honey
+\newcommand\MilkAndHoneyLogo{\textit{\raisebox{1ex}{$\mathscr{M}$}\!\&\raisebox{-1ex}{$\mathscr{H}$}}}
+
+%% Comme Ca
+\newcommand\CommeCaLogo{\textit{\LARGE\raisebox{0.45ex}{c}\hspace{-0.27em}\c c}}
+
+%% AltCocktail
+\newcounter{AltCocktail}
+\setcounter{AltCocktail}{1}
+\newcommand\FNSymbolLogo[1][1]{\setcounter{AltCocktail}{#1}{\Large{\fnsymbol{AltCocktail}}}\setcounter{AltCocktail}{1}}
+\newenvironment{AltCocktail}[2][1]
+	{%
+		\begin{Cocktail}[\Attribution{\FNSymbolLogo[#1]}]{#2}
+	}
+	{%
+		\end{Cocktail}
+	}
+
+%% John Squier logo
+\newcommand\JohnSquierLogo{\textit{\raisebox{1ex}{J}\hspace{-0.22em}S}}
+
+%%% PDT logo
+\newcommand\PDTLogo{\makebox{\includegraphics[keepaspectratio=true,height=16pt]{pdt-logo.pdf}}}
+\newcommand\PDTStarLogo{\makebox{\includegraphics[keepaspectratio=true,height=16pt]{pdt-logo.pdf}}\hspace{0.05em}\raisebox{1.7ex}[0pt][0pt]{\textsuperscript{*}}}
+
+%\newcommand\PDTLogo{\textit{\raisebox{1ex}{P}\hspace{-0.27em}D\hspace{-0.17em}\raisebox{-1ex}{T}}}
+
+%% starred version indicates that cocktail was taken from PDT cocktail book but is *not* a PDT original
+%\newcommand\PDTStarLogo{\textit{\raisebox{1ex}{P}\hspace{-0.27em}D\hspace{-0.17em}\raisebox{-1ex}{T}\,\raisebox{1ex}[0pt][0pt]{$^*$}}}
+\newenvironment{PDTCocktail*}[1]
+	{%
+		\begin{Cocktail}[\Attribution{\PDTStarLogo}]{#1}
+	}
+	{%
+		\end{Cocktail}
+	}
+
+\newenvironment{Ingredients}
+	{%
+		\large
+		\begin{list}{}{%
+		\setlength{\leftmargin}{0pt}
+		\setlength{\listparindent}{0pt}
+		\setlength{\itemindent}{0pt}
+		\setlength{\labelwidth}{0pt}
+		\setlength{\labelsep}{0pt}
+		}
+	}
+	{%
+		\end{list}%
+		\ignorespacesafterend
+	}
+
+\newenvironment{Instructions}
+	{%
+		\vspace{6ex}
+		\hfill\begin{minipage}[!h]{0.7\textwidth}
+		\parindent=0pt
+		\setlength{\parskip}{2ex}
+	}
+	{%
+		\end{minipage}%
+		\vspace{2ex}%
+		\ignorespacesafterend
+	}
+
+\newenvironment{Instructions*}[1]
+	{%
+		\vspace{6ex}
+		\hfill\begin{minipage}[!h]{#1}
+		\parindent=0pt
+		\setlength{\parskip}{2ex}
+	}
+	{%
+		\end{minipage}%
+		\vspace{2ex}%
+		\ignorespacesafterend
+	}
+	
+\newcommand\Quantity[1]{\par%\vspace{2ex}
+	\textit{#1}}
+%% necessary because formatting commands don't want to play nicely with \SI
+%% that is to say that
+%% \textit{hello world \SI{\num{3.0e8}}{\meter\per\second}} 
+%% won't all be rendered in italics, so insteady \textit must be applied to the two arguments of \SI
+%% hence why \SIstyle is kind of confusing-looking
+\newcommand\SIstyle[3]{\SI{#1{#2}}{#1{#3}}}
+\newcommand\Title[1]{\textit{#1}}
+
+%% when/where a(n hbar) cocktail was introduced (typically/always a Fantabulon)
+%\newcommand\FantabulonSummerCamp[1][1]{\footnotetext[#1]{Fantabulon: Summer Camp!\ (June 2013)}}
+\newcommand\IntroducedAt[3]{\footnotetext[#1]{#2\ (#3)}}
+\newcommand\FantabulonSummerCamp[1][1]{\IntroducedAt{#1}{Fantabulon: Summer Camp!}{June 2013}}
+\newcommand\FantabulonAvalanche[1][1]{\IntroducedAt{#1}{Fantabulon: Avalanche!}{January 2014}}
+
+
+	
+%% other formatting stuff
+% tipa is used for \textprimstress symbol, which shows stressed syllable in pronunciation guides
+\usepackage{tipa}
+\newcommand{\pronunciation}[1]{\textbar#1\textbar}
+\usepackage{textcomp}
+\newcommand{\No}{\textnumero\,}
+%\renewcommand{\No}{\textsuperscript{\#}}
+%\renewcommand{\No}{N\raisebox{-0.1ex}{\textsuperscript{\underline{o}}}}
+%\renewcommand{\No}{N\protect\raisebox{0.5ex}{\underline{o}}}
+%\newcommand\MyNumero{N\raisebox{0.9ex}[0pt][0pt]{\tiny{\underline{o}}}}
+%\newcommand\No{\protect\MyNumero}
+\renewcommand{\And}{\&\xspace}
+
+
+
+\newcommand{\LilletFootnoteText}{Cocchi Americano is said to more closely match the orginal Kina Lillet than Lillet Blanc's current formulation.}
+\newcommand{\Lillet}{Lillet Blanc or Cocchi Americano}
+
+% for certain longer notecards
+\usepackage{multicol}
+
+\newcommand\HBar{\Attribution{\HBarLogo}}
+
+\newcommand\NobleRotLogo{\raisebox{0.9ex}[0pt]{\(\mathfrak{N}\)}%
+  \(\mathfrak{R}\)}
+\newcommand\NobleRot{\Attribution{\NobleRotLogo}}
+
+\makeatletter
+\newcommand\PDTSt@r{\Attribution{\PDTStarLogo}}
+\newcommand\PDTNoSt@r{\Attribution{\PDTLogo}}
+\newcommand\PDT{%
+  \@ifstar%
+    {\PDTSt@r}%
+    {\PDTNoSt@r}%
+}
+\makeatother
+
+\usepackage{marvosym}
+\newcommand\websymbol{\MVAt}
+\usepackage{footmisc}
+\usepackage[hyphens]{url} % breaks line at hyphens, too
+\usepackage{etoolbox} % this is the thing to use instead of the ifthen package
+% see
+% http://tex.stackexchange.com/questions/145892/how-do-i-use-the-etoolbox-package-to-check-if-an-argument-to-a-macro-was-defined for usage
+\DefineFNsymbols*{web}{\websymbol}
+%\usepackage[iso]{datetime}
+%\yyyymmdddate
+%\renewcommand\dateseparator{-}
+% \web is kind of fragile inside of the optional argument of Cocktail, but
+% it's probably going to be infrequently used, so whatever.  In any case, to
+% deal with the fragility, enclose \web in curly braces
+% source:
+% http://stackoverflow.com/questions/12890695/optional-argument-inside-optional-argument-misparsed
+\DefineFNsymbols*{lamportnostar}[math]{\dagger\ddagger\S\P\|{\dagger\dagger}{\ddagger\ddagger}}
+%\setfnsymbol{lamportnostar}
+\newcommand\web[2][]{\Attribution{\large\websymbol}%
+  \setfnsymbol{web}%
+  \footnotetext[1]{\url{#2}%
+    \ifstrempty{#1}%
+      {}%
+      { (viewed on #1)}%
+  }%
+  \setfnsymbol{lamport*}%
+}
+
+\newcommand\yields[1]{\par\smallskip{\sl Yields #1}}
+
+\newcommand\BookTitle[1]{\textit{#1}}
+
+\newcommand\GoodFoodLogo{GF}
+\newcommand\GoodFood{\Attribution{\GoodFoodLogo}}
+
+\begin{document}
+
+%%% STYLE GUIDE
+%%% Ingredients: liquors first (most to least), liqueurs, sweeteners, juices, bitters, soda/tonic water/anything carbonated/cream/toppers
+%%% Oxford comma???
+
+%% the Noble Rot ingredients are all a guess -- maybe you should call them and
+%% see if they'll let you in on their secret
+\begin{Cocktail}[\NobleRot]{Crux of the Matter}
+  \begin{Ingredients}
+    \item \SI{1}{\oz} El Dorado \age{12} rum
+    \item \SI{\half}{\oz} Hennessey \vs cognac
+    \item \SI{\threequarters}{\oz} lime juice
+    \item \SI{\half}{\oz} Combier triple sec
+    \item \SI{\quarter}{\oz} Byrrh\footnote{Quinine-infused fortified wine.}
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Shake ingredients with ice, strain into an old fashioned  glass with a
+    single large cube, and garnish with and orange twist.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\NobleRot]{Son of the Serpent}
+  \begin{Ingredients}
+    \item \SI{1\half*}{\oz} Siete Leguas blanco tequila
+    \item \SI{\half}{\oz} Aperol
+    \item \SI{\half}{\oz} grapefruit juice
+    \item \SI{\half}{\oz} lime juice
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Shake ingredients with ice, strain into a coupe, and garnish with a thick
+    orange twist.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\NobleRot]{Unearthed}
+  \begin{Ingredients}
+    \item \SI{2}{\oz} Russels Reserve rye whiskey
+    \item \SI{\half}{\oz} lmeon juice
+    \item \SI{\half}{\oz} honey-chamomile syrup
+    \item \SI{\half}{\oz} Averna
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Shake ingredients except Averna with ice, strain into an old fashioned
+    glass with a single large cube, then add Averna, letting it sink to the
+    bottom.  Garnish with a thick lemon twist.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\NobleRot]{Jamaican Stallion}
+  \begin{Ingredients}
+    \item \SI{2}{\oz} Plantation rum
+    \item \SI{\half}{\oz} Cocchi Americano
+    \item \SI{\half}{\oz} Aperol
+    \item a couple \si{\dashes} charred pineapple bitters
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Stir ingredients with ice, strain into an old fashioned glass with a large
+    ice cube, and garnish with a thick orange twist.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\NobleRot]{Sour Baron}
+  \begin{Ingredients}
+    \item \SI{1\half*}{\oz} Hennessey \vs cognac
+    \item \SI{\half}{\oz} calvados
+    \item \SI{\half}{\oz} lemon juice
+    \item 1~egg white
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Dry shake ingredients, then shake with ice, and strain into an old
+    fashioned glass.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\NobleRot]{Kentucky Stone}
+  \begin{Ingredients}
+    \item \SI{2}{\oz} Buffalo Trace bourbon
+    \item \SI{\half}{\oz} Averna
+    \item \SI{\half}{\oz} apricot juice
+    \item a couple \si{\dashes} Angostura bitters
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Shake ingredients with ice, strain into a coupe, and garnish with a thick
+    orange twist.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\NobleRot]{El Capataz}
+  \begin{Ingredients}
+    \item \SI{1}{\oz} Lustau cream sherry
+    \item \SI{1}{\oz} Martin Miller gin
+    \item \SI{1}{\oz} Luxardo maraschino liqueur
+    \item a \si{\dash} Angostura bitters
+  \end{Ingredients}
+\end{Cocktail}
+
+\begin{Cocktail}[\NobleRot]{Sex with a View}
+  \begin{Ingredients}
+    \item \SI{1\half*}{\oz} Monopolowa vodka
+    \item \SI{1}{\oz} pineapple juice
+    \item \SI{1}{\oz} Starvation Alley Farms cranberry juice
+    \item \SI{\half}{\oz} peach juice
+    \item \SI{\half}{\oz} lime juice
+    \item \SI{\quarter}{\oz} Fernet Branca
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Shake ingredients with ice, and strain into an ice-filled Collins glass.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT]{Luau}
+  \begin{Ingredients}\small
+    \item \SI{\threequarters}{\oz} Wray \& Nephew overproof rum
+    \item \SI{\threequarters}{\oz} Appleton Estate \vx rum
+    \item \SI{\threequarters}{\oz} El Dorado \age{15} rum
+    \item \SI{\half}{\oz} lime juice
+    \item \SI{\half}{\oz} simple syrup
+    \item \SI{\quarter}{\oz} passion fruit pur\'ee
+    \item \SI{\quarter}{\oz} Kassatly Chtaura \orgeat
+    \item a \si{\dash} Angostura bitters
+  \end{Ingredients}
+
+  \begin{Instructions}\small
+    Shake ingrdients with ice, strain into a pebble ice-filled Collins glass,
+    fill glass with pebble ice, and garnish with an umbrella, a lime wheel, an
+    orange slice, and two large straws.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT*]{Mai-Tai}
+  \begin{Ingredients}
+    \item \SI{1}{\oz} Banks 5 Island rum
+    \item \SI{1}{\oz} Rhum Cl\'ement \vsop
+    \item \SI{1}{\oz} lime juice
+    \item \SI{\half}{\oz} Marie Brizard orange cura\c cao
+    \item \SI{\half}{\oz} Kassatly Chtaura \orgeat
+  \end{Ingredients}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT*]{Margarita}
+  \begin{Ingredients}
+    \item \SI{2}{\oz} El Tesoro Platinum tequila
+    \item \SI{\threequarters}{\oz} Cointreau
+    \item \SI{\threequarters}{\oz} lime juice
+    \item \SI{\quarter}{\oz} agave syrup
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Shake ingredients with ice, strain into a salt-rimmed, ice-filled old
+    fashioned glass or a salt-rimmed coupe, and garnish with a lime wheel.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT]{Mariner}
+  \begin{Ingredients}
+    \item \SI{2}{\oz} Compass Box Oak Cross blended malt scotch
+    \item \SI{\half}{\oz} black cardamom syrup
+    \item \SI{\quarter}{\oz} pineapple juice
+    \item \SI{\quarter}{\oz} lemon juice
+  \end{Ingredients}
+
+  \begin{Instructions}\scriptsize
+    Stir ingredients with ice, strain into an old fashioned glass with a large
+    ice cube, and garnish with a lemon twist.
+
+    To make the black cardamom syrup, combine \SI{48}{\oz} symple syrup and
+    \SI{3}{\oz} black cardamom pods, boil for \SIrange{7}{8}{\minute} over
+    high heat, stirring constantly.  Without pressing on the beans, fine
+    strain, bottle, and store in the refrigerator.
+
+    Cardamom is typically dried over an open flame, thus the syrup sweetens
+    while enhancing the smokiness of the scotch.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT]{Matasaka Swizzle}
+  \begin{Ingredients}
+    \item \SI{1\half}{\oz} Nikka Taketsuru \age{12} Japanese whisky
+    \item \SI{\half}{\oz} Luxardo amaretto
+    \item \SI{\half}{\oz} lemon juice
+    \item a \si{\dash} demerara syrup
+    \item 3~\si{\dashes} Peychaud's bitters
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Add ingredients except bitters to an old fashioned glass, fill with pebble
+    ice, swizzle, refill with pebble ice, top with bitters, and garnish with a
+    sprig of mint.
+
+    This cocktail is named for the founder of Nikka Whisky.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT]{May Daisy}
+  \begin{Ingredients}
+    \item \SI{2}{\oz} Hime \vsop cognac
+    \item \SI{1}{\oz} lemon juice
+    \item \SI{\threequarters}{\oz} green Chartreuse
+    \item \SI{\threequarters}{\oz} simple syrup
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Shake ingredients with ice, strain into an old fashioned glass with a
+    single large cube, and garnish with a sprig of mint.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT]{May Day}
+  \begin{Ingredients}
+    \item \SI{\half}{\oz} Plymouth gin
+    \item \SI{\half}{\oz} Aperol
+    \item \SI{\half}{\oz} lemon juice
+    \item a \si{\dash} simple syrup
+    \item 3~\si{\dashes} Fee Brothers rhubarb bitters
+    \item \SI{2}{\oz} Mo\"et Imperial champagne
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Stir ingredients except champagne with ice, strain into a coupe, and top
+    with champagne.
+
+    Workers of the world, unite!
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT]{Melon Stand}
+  \begin{Ingredients}
+    \item \SI{2}{\oz} Plymouth gin
+    \item \SI{2}{\oz} watermelon juice
+    \item \SI{\threequarters}{\oz} lemon juice
+    \item \SI{\half}{\oz} Aperol
+    \item \SI{\half}{\oz} simple syrup
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Shake ingredients with ice, strain into a pebble ice-filled Collins glass,
+    and garnish with three watermelon balls on a pick.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT]{Mexicano}
+  \begin{Ingredients}
+    \item \SI{1}{\oz} Partida reposado tequila
+    \item \SI{\half}{\oz} Gran Classico Bitter
+    \item 3 \SI{\quarter}{\inch} slices of cucumber
+    \item \SI{1\half}{\oz} Mo\"et Imperial champagne
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Muddle the cucumber, add the spirits, shake with ice, fine strain into a
+    coupe, top with champagne, and garnish with a lemon twist.
+
+    This is an oblique, vegetal riff on the classic
+    \InlineCocktail*{Americano}.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT*]{Milk Punch}
+  \begin{Ingredients}
+    \item \SI{1}{\oz} Pierre Ferrand Ambre cognac
+    \item \SI{1}{\oz} Myers's dark rum
+    \item \SI{1\half*}{\oz} whole milk
+    \item \SI{\threequarters}{\oz} simple syrup
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Shake ingredients with ice, strain into an old fashioned glass with one
+    large ice cube, and garnish with grated nutmeg.
+
+    This cocktail is a New Orleans brunch staple dating back to the 1860s.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT]{Montgomery Smith}
+  \begin{Ingredients}
+    \item \SI{2}{\oz} Hine \vsop cognac
+    \item \SI{\half}{\oz} B\'en\'edictine
+    \item \SI{\quarter}{\oz} Fernet Branca
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Stir ingredients with ice, strain into a coupe, and garnish with a lemon
+    twist.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT]{Morango Fizz}
+  \begin{Ingredients}
+    \item \SI{2}{\oz} strawberry-infused M\"ae de Ouro cacha\c ca
+    \item \SI{\threequarters}{\oz} lemon juice
+    \item \SI{\threequarters}{\oz} simple syrup
+    \item 1 egg white
+    \item \SI{1}{\oz} \soda
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Dry shake ingredients, then shake with ice, strain into an old fashioned
+    glass, and top with \soda.
+
+    To make the strawberry-infused cacha\c ca, combine \SI{750}{\milli\liter}
+    cacha\c ca and 16~quartered strawberries sans stems for 12~hours at room
+    temperature, then fine strain and bottle.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT*]{Navy Grog}
+  \begin{Ingredients}
+    \item \SI{1}{\oz} Gosling's Black Seal rum
+    \item \SI{1}{\oz} Appleton Reserve rum
+    \item \SI{1}{\oz} El Dorado \age{15} rum
+    \item \SI{\threequarters}{\oz} lime juice
+    \item \SI{\threequarters}{\oz} grapefruit juice
+    \item \SI{\half}{\oz} honey syrup
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Add ingredients to a Collins glass, fill with pebble ice, swizzle, and top
+    with more pebble ice.
+
+    Although grog dates back many years to the British Royal Navy, this
+    cocktail was yet another creation of Don the Beachcomber.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT]{New Amsterdam}
+  \begin{Ingredients}
+    \item \SI{2}{\oz} Bols genever
+    \item \SI{1}{\oz} Clear Creek Kirschwasser
+    \item a \si{\dash} demerara syrup
+    \item 2~\si{\dashes} Peychaud's bitters
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Stire ingredients with ice, strain into a coupe, and garnish with a lmeon
+    twist.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT]{Newark}
+  \begin{Ingredients}
+    \item \SI{2}{\oz} Laird's straight apple brandy
+    \item \SI{1}{\oz} Vya sweet vermouth
+    \item a \si{\dash} Fernet Branca
+    \item a \si{\dash} Maraska maraschino liqueur
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Stir ingredients with ice, and strain into a coupe.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT*]{New York Flip}
+  \begin{Ingredients}
+    \item \SI{1}{\oz} Elijah Craig \age{12} bourbon
+    \item \SI{\half}{\oz} heavy cream
+    \item \SI{\quarter}{\oz} simple syrup
+    \item 1 egg yolk
+    \item \SI{\threequarters}{\oz} Noval Black port
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Dry shake ingredients, then shake with ice, strain into a coupe, top with
+    port, and garnish with grated nutmeg.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT]{Noce Royale}
+  \begin{Ingredients}
+    \item \SI{1}{\oz} London dry gin
+    \item \SI{\half}{\oz} Plymouth sloe gin
+    \item \SI{\quarter}{\oz} Monteverdi Nocino
+    \item \SI{1\half*}{\oz} Mo\"et Imperial champagne
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Stir ingredients except champagne with ice, strain into a coupe, and top
+    with champagne.
+
+    \emph{Noce} is Italian for walnut, and royales are champagne-topped
+    cocktails. This recipe suggests the possibility of other Italian nut
+    liqueur royales.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT*]{Nouveau Carr\'e}
+  \begin{Ingredients}
+    \item \SI{1\half}{\oz} Ocho a\~nejo tequila
+    \item \SI{\threequarters}{\oz} Lillet blanc
+    \item \SI{\quarter}{\oz} B\'en\'edictine
+    \item 3~\si{\dashes} Peychaud's bitters
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Stir ingredients with ice, strain into a coupe, and garnish with a lemon
+    twist.
+
+    This cocktail's name makes overt reference to its forebear, the
+    \InlineCocktail*{Vieux Carr\'e}.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT]{$\boldsymbol{N}$th Degree}
+  \begin{Ingredients}
+    \item \SI{1}{\oz} Rhum Cl\'ement \vsop
+    \item \SI{1}{\oz} Laird's straight apple brandy
+    \item \SI{\half}{\oz} green Chartreuse
+    \item 1 demerara sugar cube
+    \item 2~\si{\dashes} Fee Brothers whiskey barrel aged bitters
+  \end{Ingredients}
+
+  \begin{Instructions}\scriptsize
+    Muddle the sugar cube and bitters, add the remaining ingredients, stir with
+    ice, strain into an old fashioned glass with one large ice cube, and
+    garnish with an orange and lemon twist.
+
+    This cocktail was inspired by Milk \& Honey's old fashioned-style cocktails
+    that split the base between two spirits.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT]{Occidental}
+  \begin{Ingredients}
+    \item \SI{2}{\oz} Linie Aquavit
+    \item \SI{\threequarters}{\oz} Grand Marnier
+    \item \SI{\half}{\oz} Amaro Nonino
+    \item a \si{\rinse} Fernet Branca
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Rinse a coupe with Fernet, stir remaining ingredients with ice, strain into
+    prepared coupe, and garnish with an orange twist.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT]{Old Flame}
+  \begin{Ingredients}
+    \item \SI{1\half*}{\oz} Plymouth gin
+    \item \SI{\half}{\oz} lemon juice
+    \item \SI{\half}{\oz} simple syrup
+    \item 1~egg white
+    \item \SI{\half}{\oz} green Chartreuse \vep
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Dry shake ingredients except Chartreuse, then shake with ice, strain into a
+    coupe, and pour flaming Chartreuse over the drink.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT*]{Old Pal}
+  \begin{Ingredients}
+    \item \SI{2}{\oz} Old Overholt rye whiskey
+    \item \SI{\half}{\oz} Dolin dry vermouth
+    \item \SI{\half}{\oz} Campari
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Stir ingredients with ice, and strain into a coupe.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT*]{Opera Cocktail}
+  \begin{Ingredients}
+    \item \SI{1\half*}{\oz} Plymouth gin
+    \item \SI{1}{\oz} Dubonnet Rouge
+    \item \SI{\quarter}{\oz} Mandarine Napoleon
+    \item a \si{\dash} orange bitters
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Stir ingredients with ice, strain into a coupe, and garnish with an orange
+    twist.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT]{Paddy Wallbanger}
+  \begin{Ingredients}
+    \item \SI{1\quarter*}{\oz} Black Bush Irish whiskey
+    \item \SI{1\quarter*}{\oz} Dolin dry vermouth
+    \item \SI{\half}{\oz} Galliano
+    \item 2~\si{\dashes} orange bitters
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Stir ingredients with ice, and strain into a coupe.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT]{Parkside Fizz}
+  \begin{Ingredients}
+    \item \SI{2}{\oz} Hangar One Buddha's Hand vodka
+    \item \SI{\threequarters}{\oz} lemon juice
+    \item \SI{\half}{\oz} Kassatly Chtaura \orgeat
+    \item 8~mint leaves
+    \item \SI{1}{\oz} \soda
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Muddle the mint leaves and \orgeat, add remaining ingredients, shaked with
+    ice, strain into an ice-filled old fashioned glass, top with \soda, and
+    garnish with a sprig of mint.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT]{Pearl Button}
+  \begin{Ingredients}
+    \item \SI{2}{\oz} M\"ae de Ouro cacha\c ca
+    \item \SI{\threequarters}{\oz} Lillet Blanc
+    \item \SI{\half}{\oz} lime juice
+    \item \SI{1\half*}{\oz} San Pellegrino limonata
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Shake ingredients except limonata with ice, strain into an ice-filled
+    Collins glass, top with limonata, and garnish with half a grapefruit wheel.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT]{Pearl of Puebla}
+  \begin{Ingredients}
+    \item \SI{1\half*}{\oz} Sombra mezcal
+    \item \SI{\threequarters}{\oz} yellow Chartreuse
+    \item \SI{\threequarters}{\oz} lime juice
+    \item 4~\si{\sprigs} fresh oregano
+    \item a \si{\dash} Ricard pastis
+    \item a \si{\dash} agave nectar
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Muddle the oregano and agave nectar, add remaining ingredients, shake with
+    ice, and fine strain into a coupe.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT]{Pharaoh Cooler}
+  \begin{Ingredients}
+    \item \SI{1\half*}{\oz} Partida blanco tequila
+    \item \SI{1}{\oz} watermelon juice
+    \item \SI{\threequarters}{\oz} grenadine
+    \item \SI{\half}{\oz} lime juice
+    \item 4~\si{\drops} rose water
+    \item \SI{1}{\oz} \soda
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Shake ingredients except \soda with ice, strain into an ice-filled Collins
+    glass, and top with \soda.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT]{Persephone}
+  \begin{Ingredients}
+    \item \SI{1}{\oz} Laird's straight apple brandy
+    \item \SI{\threequarters}{\oz} Dolin sweet vermouth
+    \item \SI{\half}{\oz} Plymouth sloe gin
+    \item \SI{\half}{\oz} lemon juice
+    \item \SI{\half}{\oz} simple syrup
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Stir (yes, \emph{stir}) ingredients with ice, and strain into a coupe.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT*]{Prince Edward}
+  \begin{Ingredients}
+    \item \SI{2}{\oz} Compass Box Oak Cross blended malt scotch
+    \item \SI{\threequarters}{\oz} \Lillet
+    \item \SI{\half}{\oz} Drambuie
+    \item 2~\si{\dashes} orange bitters
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Stir ingredients with ice, strain into a coupe, and garnish with an orange
+    twist.
+
+    The original recipe did not call for the bitters, but anything added to a
+    \InlineCocktail*{Rusty Nail} is likely to improve it.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT*]{Prince of Wales}
+  \begin{Ingredients}
+    \item \SI{1}{\oz} Hine \vsop cognac
+    \item \SI{1}{\oz} Blandy's Sercial madeira
+    \item \SI{\quarter}{\oz} Grand Marnier
+    \item a \si{\dash} Angostura bitters
+    \item \SI{1}{\oz} Mo\"et Imperial champagne
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Stir ingredients except champagne with ice, strain into a coupe, top with
+    champagne, and garnish with an orange twist.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[{\web[2014-06-05]{http://www.seriouseats.com/recipes/2012/10/how-to-make-dons-mix-for-tiki-drinks-cocktails.html}}]{Don's
+  mix}
+  \begin{Ingredients}\normalsize
+    \item 3~cinnamon sticks
+    \item \SI{1}{\cup} unrefined sugar
+    \item \SI{1}{\cup} water
+      \item \SI{2}{\cups} fresh grapefruit
+        juice\footnote{requires approximately \numrange{3}{4} grapefruits}
+  \end{Ingredients}
+
+  \begin{Instructions}\small
+    Break cinnamon sticks into a few large pieces, combine with sugar and
+    water, and bring to a boil.  Simmer for \SI{10}{\minute}, let steep for
+    another \SI{15}{\minute}, and fine strain into a nonreactive container.
+    Keep refrigerated for up to 5~days.
+    \yields{about \SI{28}{\oz}}
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[{\web[2014-06-05]{http://drinks.seriouseats.com/2012/10/tiki-cocktails-don-the-beachcomber-dons-mix-grapefruit-cinnamon.html}}]{Don
+  Ryan}
+  \begin{Ingredients}
+    \item \SI{1}{\oz} Rittenhouse rye whiskey
+    \item \SI{1}{\oz} Carpano Antica sweet vermouth
+    \item \SI{1\half*}{\oz} Don's mix
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Shake ingredients with ice, strain into an ice-filled old fashioned glass, garnish with a sprig of mint.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT]{Professor}
+  \begin{Ingredients}
+    \item \SI{2}{\oz} Rhum Cl\'ement \vsop
+    \item \SI{\threequarters}{\oz} Dow's tawny port
+    \item \SI{\half}{\oz} Carpano Antica sweet vermouth
+    \item a \si{\dash} Angostura bitters
+    \item a \si{\dash} orange bitters
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Stir ingredients with ice, strain into a coupe, and garnish with an orange
+    twist.
+
+    This drink takes inspiration from the \InlineCocktail{Chancellor} cocktail
+    from Frederick Birmingham's \BookTitle{Esquire Drink Book}.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\GoodFood]{\(\boldsymbol{\cdot\cdot\cdot}\) --- (Three
+      Dots \And a Dash)}
+  \begin{Ingredients}\normalsize
+    \item \SI{1\half*}{\oz} Amber Martinician Rhum
+    \item \SI{\half}{\oz} demerara rum
+    \item \SI{\half}{\oz} lime juice
+    \item \SI{\half}{\oz} orange juice
+    \item \SI{\half}{\oz} honey syrup
+    \item \SI{\quarter}{\oz} falernum
+    \item \SI{\quarter}{\oz} pimento dram
+    \item \SI{6}{\oz} crushed ice
+  \end{Ingredients}
+
+  \begin{Instructions}\small
+    Combine ingredients in a blender, blend at high speed for about 5~seconds,
+    pour into a Collins glass, and garnish with 3~cherries and a pineapple
+    spear.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\GoodFood]{Mai Tai}
+  \begin{Ingredients}
+    \item \SI{1}{\oz} Jamaican rum
+    \item \SI{1}{\oz} Martinician rum
+    \item \SI{\threequarters}{\oz} lime juice
+    \item \SI{\half}{\oz} orange cura\c cao
+    \item \SI{\half}{\oz} \orgeat
+    \item \SI{\half}{\oz} simple syrup
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Shake ingredients with ice, strain into an ice-filled old fashioned glass,
+    and garnish with a lime shell and a sprig of mint.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\GoodFood]{Life's Rich Pageant}
+  \begin{Ingredients}
+    \item \SI{\threequarters}{\oz} black strap rum
+    \item \SI{\threequarters}{\oz} Dominican rum
+    \item \SI{\quarter}{\oz} Velvet Falernum
+    \item \SI{\quarter}{\oz} Amontillado sherry
+    \item \SI{\threequarters}{\oz} lime juice
+    \item \SI{\threequarters}{\oz} passion fruit cinnamon syrup
+  \end{Ingredients}
+
+  \begin{Instructions}\small
+    Shake ingredients with ice, strain into an ice-filled Collins glass, and
+    garnish with grated cinnamon.
+
+    To make the passion fruit cinnamon syrup, combine equal parts strong
+    cinnamon demerara syrup and pur\'eed passion fruit.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\GoodFood]{Zombie Punch}
+  \begin{multicols}{2}
+  \begin{Ingredients}
+    \item \SI{1\half*}{\oz} Jamaican rum
+    \item \SI{1\half*}{\oz} Puerto Rican gold rum
+    \item \SI{1}{\oz} 151-proof demerara rum
+    \item \SI{\threequarters}{\oz} lime juice
+    \item \SI{\half}{\oz} Don's mix
+    \item \SI{\half}{\oz} falernum
+    \item a~\si{\dash} grenadine
+    \item a~\si{\dash} Angostura bitters
+    \item \SI{\eighth}{\tsp}  pastis
+    \item \SI{6}{\oz} crushed ice
+  \end{Ingredients}
+  \end{multicols}
+
+  \begin{Instructions}
+    Add ingredients to a blender, saving ice for last.  Blend at high speed for
+    5~seconds, pour everything into a chimney glass, fill with ice, and garnish
+    with a sprig of mint.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT*]{Queens Park Swizzle}
+  \begin{Ingredients}
+    \item \SI{2}{\oz} Barbancourt \age{8} Rhum
+    \item \SI{1}{\oz} lime juice
+    \item \SI{\half}{\oz} demerara syrup
+    \item 8~mint leaves
+    \item 2~\si{\dashes} Peychaud's bitters
+    \item 2~\si{\dashes} Angostura bitters
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Muddle the mint leaves and demerara syrup in Collins glass, add remaining
+    ingredients except bitters, top with pebble ice, swizzle, add more pebble
+    ice, add bitters, and garnish with a sprig of mint.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT]{Rack \And Rye}
+  \begin{Ingredients}
+    \item \SI{1\half*}{\oz} Russell's Reserve \age{6} rye whiskey
+    \item \SI{\threequarters}{\oz} van Oosten Batavia Arrack
+    \item \SI{\quarter}{\oz} demerara syrup
+    \item 2~\si{\dashes} Angostura bitters
+    \item 2~\si{\dashes} orange bitters
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Stir ingredients with ice, strain into an ice-filled old fashioned glass,
+    twist an orange peel and a lemon peel over the surface, discard peels, and
+    garnish with a rock candy swizzle.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT*]{Ramos Gin Fizz}
+  \begin{Ingredients}\normalsize
+    \item \SI{2}{\oz} London dry gin
+    \item \SI{\threequarters}{\oz} heavy cream
+    \item \SI{\threequarters}{\oz} simple syrup
+    \item \SI{\half}{\oz} lime juice
+    \item \SI{\half}{\oz} lemon juice
+    \item 5~\si{\drops} orange flower water
+    \item 1~egg white
+    \item \SI{1}{\oz} \soda
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Dry shake ingredients except \soda, then shake with ice, strain into a
+    Collins glass, and top with \soda.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT*]{Rapscallion}
+  \begin{Ingredients}
+    \item \SI{2\quarter*}{\oz} Talisker \age{10} scotch
+    \item \SI{\threequarters}{\oz} Lustau Pedro Xim\'enez sherry
+    \item a~\si{\rinse} St.\ George absinthe
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Stir ingredients with ice, strain into an absinthe-rinsed coupe.  Twist a
+    lemon peel over the surface and discard.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT*]{Rattlesnake}
+  \begin{Ingredients}
+    \item \SI{1\half*}{\oz} Rittenhouse rye whiskey
+    \item \SI{\threequarters}{\oz} lemon juice
+    \item \SI{\half}{\oz} simple syrup
+    \item 1~egg white
+    \item a~\si{\rinse} Vieux Pontarlier absinthe
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Dry shake ingredients, then shake with ice, strain into an absinthe-rinsed
+    coupe.
+
+    \BookTitle{The Savoy Cocktail Book} says this drink, ``will cure [a]
+    rattlesnake bite, or kill rattlesnakes, or make you see them.''
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT*]{Remember the Maine}
+  \begin{Ingredients}
+    \item \SI{2}{\oz} Russell's Reserve \age{6} rye whiskey
+    \item \SI{\half}{\oz} Carpano Antica sweet vermouth
+    \item \SI{\half}{\oz} Cherry Heering
+    \item a~\si{\dash} Pernod pastis 
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Stir ingredients with ice, strain into a coupe, and garnish with a lemon
+    twist.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT]{Red-Headed Saint}
+  \begin{Ingredients}
+    \item \SI{2}{\oz} Beleza Pura cacha\c ca
+    \item \SI{\threequarters}{\oz} lime juice
+    \item \SI{\half}{\oz} agave syrup
+    \item \SI{\quarter}{\oz} yellow Chartreuse
+    \item 4~\si{\dashes} A.\,B.\ Smeby verbena bitters
+    \item 4~\si{dashes} Peychaud's bitters
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Shake ingredients except Peychaud's with ice, strain into a pebble
+    ice-filled Collins glass, and top with Peychaud's.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT]{Remember Maine}
+  \begin{Ingredients}
+    \item \SI{2}{\oz} Rhum Cl\'ement \vsop
+    \item \SI{1\half*}{\oz} Red Jacket orchard apple cider
+    \item \SI{\quarter}{\oz} St.\ Elizabeth allspice dram
+    \item 2~\si{\dashes} Angostura bitters
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Stir ingredients with ice, strain into an old fashioned glass with a single
+    large ice cube, and garnish with a sea salt-sprinkled apple fan.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT]{Resting Point}
+  \begin{Ingredients}
+    \item \SI{1\half*}{\oz} Siete Leguas reposado tequila
+    \item \SI{\half}{\oz} yellow Chartreuse
+    \item \SI{\half}{\oz} Punt e Mes
+    \item \SI{\half}{\oz} lemon juice
+    \item \SI{\half}{\oz} agave syrup
+    \item 1~strawberry
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Muddle the strawberry, add remaining ingredients, shake ingredients with
+    ice, strain into a coupe, and garnish with a strawberry fan.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT*]{Rio Bravo}
+  \begin{Ingredients}
+    \item \SI{2}{\oz} Sagatiba cacha\c ca
+    \item \SI{\threequarters}{\oz} lime juice
+    \item \SI{\half}{\oz} Kassatly Chtaura \orgeat
+    \item 3~quarter-sized slices peeled ginger
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Muddle the ginger and \orgeat, add remaining ingredients, shake with ice,
+    fine-strain into a coupe, and garnish with an orange twist.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT*]{Rob Roy}
+  \begin{Ingredients}
+    \item \SI{2\half*}{\oz} Famous Grouse blended scotch
+    \item \SI{\threequarters}{\oz} Dolin sweet vermouth
+    \item 2~\si{\dashes} Angostura orange bitters
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Stir ingredients with ice, strain into a coupe, and garnish with a lemon
+    twist.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT*]{Rosita}
+  \begin{Ingredients}
+    \item \SI{1\half*}{\oz} Partida reposado tequila
+    \item \SI{\half}{\oz} Martini sweet vermouth
+    \item \SI{\half}{\oz} Dolin dry vermouth
+    \item \SI{\half}{\oz} Campari
+      \item a~\si{\dash} Angostura bitters
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Stir ingredients with ice, strain into a coupe, and garnish with an orange
+    twist.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT*]{Royal Bermuda Yacht Club}
+  \begin{Ingredients}
+    \item \SI{1\half*}{\oz} Mount Gay Eclipse amber rum
+    \item \SI{\threequarters}{\oz} lime juice
+    \item \SI{\half}{\oz} Cointreau
+    \item \SI{\half}{\oz} Velvet Falernum
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Shake ingredients with ice, strain into a coupe, and garnish with a lime
+    wheel.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT]{Rust Belt}
+  \begin{Ingredients}
+    \item \SI{1\half*}{\oz} Barbancourt \age{8} rum
+    \item \SI{\half}{\oz} Navan vanilla liqueur
+    \item \SI{\half}{\oz} lemon juice
+    \item \SI{\half}{\oz} lime juice
+    \item \SI{\quarter}{\oz} Kassatly Chtaura \orgeat
+    \item 1~egg white
+    \item 2~\si{\spritzes} Angostura bitters
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Dry shake ingredients except bitters, then shake with ice, strain into
+    an old fashioned glass, and spritz with bitters.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT*]{Rusty Nail}
+  \begin{Ingredients}
+    \item \SI{2}{\oz} Famous Grouse blended scotch
+    \item \SI{\threequarters}{\oz} Drambuie
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Stir ingredients with ice, and strain into an old fashioned glass with a
+    single large ice cube.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT]{Rye Witch}
+  \begin{Ingredients}
+    \item \SI{2}{\oz} Rittenhouse rye whiskey
+    \item \SI{\quarter}{\oz} Strega
+    \item \SI{\quarter}{\oz} Lustau Palo Cortado sherry
+    \item 1~sugar cube
+    \item 2~\si{\dashes} orange bitters
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Muddle the sugar cube and bitters, add remaining ingredients, stir with
+    ice, and strain into an old fashioned glass.  Twist an orange peel over the
+    surface and discard.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT*]{Sazerac}
+  \begin{Ingredients}
+    \item \SI{2}{\oz} Rittenhouse rye whiskey
+    \item 3~\si{\dashes} Peychaud's bitters
+    \item 2~\si{\dashes} Angostura bitters
+    \item 1~demerara sugar cube
+    \item a~\si{\rinse} Vieux Pontarlier absinthe
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Muddle the sugar and bitters, then add the whiskey, stir with ice, strain
+    into an absinthe-rinsed old fashioned glass, twist a lemon peel over the
+    surface, and discard the peel.
+
+    This drink was named after its original base spirit, Sazerac de Forge et
+    Fils cognac; it wasn't until the 1870s that rye was used.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT*]{Seelbach Cocktail}
+  \begin{Ingredients}
+    \item \SI{1}{\oz} high rye bourbon
+    \item \SI{\half}{\oz} Cointreau
+    \item 3~\si{\dashes} Peychaud's bitters
+    \item 2~\si{\dashes} Angostura bitters
+    \item \SI{1\half*}{\oz} champagne
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Stir ingredients with ice, strain into a coupe, top with champagne, and
+    garnish with an orange twist.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT]{Shaddock Rose}
+  \begin{Ingredients}
+    \item \SI{2}{\oz} El Tesoro reposado tequila
+    \item \SI{\half}{\oz} grapefruit cordial
+    \item a~\si{\dash} Peychaud's bitters
+    \item a~\si{\dash} orange bitters
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Stir ingredients with ice, strain into a coupe, and garnish with a lemon
+    twist.
+
+    This cocktail is a grapefruit/tequila variation on the
+    \InlineCocktail*{Gimlet}.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT*]{Sidecar}
+  \begin{Ingredients}
+    \item \SI{2}{\oz} R\'emy Martin \vsop cognac
+    \item \SI{\half}{\oz} Cointreau
+    \item \SI{\half}{\oz} lemon juice
+    \item \SI{\quarter}{\oz} simple syrup
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Shake ingredients with ice, and strain into a half sugar-rimmed coupe.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT]{Siesta}
+  \begin{Ingredients}
+    \item \SI{1\half*}{\oz} El Tesoro Platinum tequila
+    \item \SI{\half}{\oz} lime juice
+    \item \SI{\half}{\oz} grapefruit juice
+    \item \SI{\half}{\oz} simple syrup
+    \item \SI{\quarter}{\oz} Campari
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Shake ingredients with ice, strain into a coupe, and garnish with a
+    grapefruit twist.
+
+    The inspiration for this cocktail was the \InlineCocktail*{Hemingway
+    Daiquiri}.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT]{Caramelized simple syrup}
+  \begin{Ingredients}
+    \item \SI{1}{\cup} superfine sugar
+    \item \SI{2}{\Tbsp} + \SI{10}{\oz} water
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Add superfine sugar and \SI{2}{\Tbsp} water into a saucepan, place over
+    medium-high heat, and stir until the sugar begins to bubble.  Stop
+    stirring, allowing the sugar to brown.  Once it begins to brown, stir in
+    remaining \SI{10}{\oz} water, continuing until all the caramelized sugar is
+    dissolved.  Cool, bottle, and store in the refrigerator.
+
+    \yields{about \SI{15}{\oz}}
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT*]{Silver Lining}
+  \begin{Ingredients}
+    \item \SI{1\half*}{\oz} Old Overholt rye whiskey
+    \item \SI{\threequarters}{\oz} Licor 43
+    \item \SI{\threequarters}{\oz} lemon juice
+    \item \SI{\quarter}{\oz} simple syrup
+    \item 1~egg white
+    \item \SI{1}{\oz} \soda
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Dry shake ingredients, then shake with ice, strain into an old fashioned
+    glass, and top with \soda.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT*]{Singapore Sling}
+  \begin{Ingredients}
+    \item \SI{1\half*}{\oz} Plymouth gin
+    \item \SI{2}{\oz} pineapple juice
+    \item \SI{\half}{\oz} Cherry Heering
+    \item \SI{\half}{\oz} grenadine
+    \item \SI{\quarter}{\oz} Cointreau
+    \item \SI{\quarter}{\oz} B\'en\'edictine
+    \item a~\si{\dash} Angostura bitters
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Shake ingredients with ice, strain into an ice-filled Collins glass,
+    garnish  with a cherry and a splice of pineapple.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT*]{Sloe Gin Fizz}
+  \begin{Ingredients}
+    \item \SI{1}{\oz} Plymouth gin
+    \item \SI{1}{\oz} Plymouth sloe gin
+    \item \SI{\threequarters}{\oz} lemon juice
+    \item \SI{quarter}{\oz} simple syrup
+    \item \SI{3}{\oz} \soda
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Shake ingredients except \soda with ice, strain into an old fashioned
+    glass, and top with \soda.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT]{Solstice}
+  \begin{Ingredients}
+    \item \SI{1\half*}{\oz} Rittenhouse rye whiskey
+    \item \SI{\half}{\oz} Laird's straight apple brandy
+    \item \SI{\half}{\oz} Amaro Nonino
+    \item \SI{\half}{\oz} Dubonnet Rouge
+    \item \SI{\quarter}{\oz} grenadine
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Stir ingredients with ice, and strain into a coupe.
+
+    Although the drink's name doesn't specify a particular soltice, it's best
+    served on the year's darkest day.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT*]{Southside}
+  \begin{Ingredients}
+    \item \SI{2}{\oz} Plymouth gin
+    \item \SI{\threequarters}{\oz} lemon juice
+    \item \SI{\half}{\oz} simple syrup
+    \item 4~mint leaves
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Muddle the simple syrup and mint leaves, then add remaning ingredients,
+    shake with ice, and strain into a coupe.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT]{South Slope}
+  \begin{Ingredients}
+    \item \SI{\threequarters}{\oz} London dry gin
+    \item \SI{\threequarters}{\oz} Aperol
+    \item \SI{\threequarters}{\oz} Lillet Blanc
+    \item \SI{\half}{\oz} Marie Brizard orange cura\c cao
+    \item \SI{\half}{\oz} lemon juice
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Shake ingredients with ice, strain into a coupe, and garnish with a lemon
+    twist.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT*]{Statesman}
+  \begin{Ingredients}
+    \item \SI{2}{\oz} London dry gin
+    \item \SI{\half}{\oz} Rothman \And Winter Orchard Pear
+    \item a~\si{\dash} green Chartreuse
+    \item a~\si{\dash} Regan's orange bitters
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Stir ingredients with ice, strain into a coupe, and garnish with a lemon
+    twist.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT]{Swollen Gland}
+  \begin{Ingredients}
+    \item \SI{2}{\oz} Berkshire Mountain Distillers' Greylock gin
+    \item \SI{\half}{\oz} orange juice
+    \item \SI{\quarter}{\oz} yellow Chartreuse
+    \item 4~\si{\dashes} Peychaud's bitters
+    \item a~\si{\rinse} Vieux Pontarlier absinthe
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Shake ingredients except absinthe with ice, fine-strain into an
+    absinthe-rinsed coupe, and garnish with a cucumber ribbon on a pick.
+
+    As the name suggests, this cocktail is a variation on the classic
+    \InlineCocktail*{Monkey Gland}.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT*]{Tipperary}
+  \begin{Ingredients}
+    \item \SI{2}{\oz} Black Bush Irish whiskey
+    \item \SI{1}{\oz} Carpano Antica sweet vermouth
+    \item a~\si{\rinse} green Chartreuse
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Stir ingredients with ice, and strain into a green Chartreuse-rinsed coupe.
+
+    This recipe hails from 1916's \BookTitle{Recipes for Mixed Drinks} by Hugo
+    Ensslin, although \BookTitle{Cocktails: How to Mix Them} by Robert Vermeire
+    includes a \InlineCocktail*{Tipperary} with a gin base, grenadine, orange
+    juice, sweet vermouth, and mint.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT*]{Ti-Punch}
+  \begin{Ingredients}
+    \item \SI{2}{\oz} Neisson Rhum R\'eserve Sp\'eciale
+    \item a~\si{\dash} Martinique sugar cane syrup
+    \item a~lime disc\footnote{A silver dollar-sized twist cut straight off
+        the side to retain the flesh with the peel.}
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Squeeze the lime disc into an old fashioned glass  on both sides to
+    express oil from the peel and juice from the flesh, add remaining
+    ingredients, top with pebble ice, swizzle, and more pebble ice, and swizzle
+    again.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT*]{Tom Collins}
+  \begin{Ingredients}
+    \item \SI{2}{\oz} Old Tom gin
+    \item \SI{\threequarters}{\oz} lemon juice
+    \item \SI{\half}{\oz} simple syrup
+    \item \SI{2}{\oz} \soda
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Shake ingredients except \soda with ice, strain into an ice-filled Collins
+    glass, top with \soda, and garnish with a lemon slice.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT]{Tommy's Margarita}
+  \begin{Ingredients}
+    \item \SI{2}{\oz} L \And J blanco tequila
+    \item \SI{1}{\oz} lime juice
+    \item \SI{1}{\oz} agave syrup
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Shake ingredients with ice, and strain into an ice-filled old fashioned
+    glass.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT]{Triborough}
+  \begin{Ingredients}
+    \item \SI{2}{\oz} Wild Turkey rye whiskey
+    \item \SI{\half}{\oz} Clear Creek Kirschwasser
+    \item \SI{\half}{\oz} Punt e Mes
+    \item \SI{\half}{\oz} Amaro CioCiaro
+    \item a~\si{\dash} Angostura bitters
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Stir ingredients with ice, strain into an old fashioned glass, and garnish
+    with an orange twist.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT*]{Trident}
+  \begin{Ingredients}
+    \item \SI{1\quarter*}{\oz} Krogstad Aquavit
+    \item \SI{1\quarter*}{\oz} Lustau Manzanilla sherry
+    \item \SI{\half}{\oz} Cynar
+    \item 2~\si{\dashes} Fee Brothers peach bitters
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Stir ingredients with ice, strain into a coupe, and garnish with a lemon
+    twist.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT*]{Tuxedo}
+  \begin{Ingredients}
+    \item \SI{1\half*}{\oz} Plymouth gin
+    \item \SI{1}{\oz} Dolin dry vermouth
+    \item \SI{\quarter}{\oz} Luxardo maraschino liqueur
+    \item 2~\si{\dashes} orange bitters
+    \item a~\si{\rinse} Vieux Pontarlier absinthe
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Stir ingredients except absinthe with ice, strain into a absinthe-rinsed
+    coupe, and garnish with a lemon twist and a cherry.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT*]{Up to Date}
+  \begin{Ingredients}
+    \item \SI{2}{\oz} Wild Turkey rye whiskey
+    \item \SI{\threequarters}{\oz} Lustau Manzanilla sherry
+    \item \SI{\half}{\oz} Grand Marnier
+    \item 2~\si{\dashes} Angostura bitters
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Stir ingredients with ice, strain into a coupe, and garnish with a lemon
+    twist.
+
+    The original recipe from \BookTitle{Recipes from Mixed Drinks} simply calls
+    for sherry, and while an Oloroso would work, the Manzanilla adds salinity
+    and acidity to the drink.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT]{Velvet Club}
+  \begin{Ingredients}
+    \item \SI{1}{\oz} Hine \vsop cognac
+    \item \SI{\half}{\oz} Lillet Blanc
+    \item \SI{\half}{\oz} Marie Brizard white cr\`eme de cacao
+    \item \SI{1}{\oz} Mo\"et Imperial champagne
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Stir ingredients except champagne with ice, strain into a coupe, and top
+    with champagne.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT]{Vieux Mot}
+  \begin{Ingredients}
+    \item \SI{1\half*}{\oz} Plymouth gin
+    \item \SI{\threequarters}{\oz} lemon juice
+    \item \SI{\half}{\oz} St.\ Germain
+    \item \SI{\half}{\oz} simple syrup
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Shake ingredients with ice, and strain into a coupe.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT*]{Vieux Carr\'e}
+  \begin{Ingredients}
+    \item \SI{1}{\oz} Sazerac \age{6} rye whiskey
+    \item \SI{1}{\oz} Hine \vsop cognac
+    \item \SI{1}{\oz} Carpano Antica sweet vermouth
+    \item \SI{\quarter}{\oz} B\'en\'edictine
+    \item a~\si{\dash} Angostura bitters
+    \item a~\si{\dash} Peychaud's bitters
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Stir ingredients with ice, and strain into an old fashioned glass with a
+    single large ice cube.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT*]{Ward Eight}
+  \begin{Ingredients}
+    \item \SI{2}{\oz} Rittenhouse rye whiskey
+    \item \SI{\half}{\oz} orange juice
+    \item \SI{\half}{\oz} lemon juice
+    \item \SI{\quarter}{\oz} simple syrup
+    \item a~\si{\dash} Al Wadi pomegranate molasses
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Shake ingredients with ice, and strain into a coupe.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT]{Water Lily}
+  \begin{Ingredients}
+    \item \SI{\threequarters}{\oz} Plymouth gin
+    \item \SI{\threequarters}{\oz} cr\`eme de violette
+    \item \SI{\threequarters}{\oz} Cointreau
+    \item \SI{\threequarters}{\oz} lemon juice
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Shake ingredients with ice, strain into a coupe, and garnish with an orange
+    twist.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT*]{Weeski}
+  \begin{Ingredients}
+    \item \SI{2}{\oz} Jameson \age{12} Irish whiskey
+    \item \SI{\threequarters}{\oz} Lillet Blanc
+    \item \SI{\half}{\oz} Cointreau
+    \item 2~\si{\dashes} orange bitters
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Stir ingredients with ice, strain into a coupe, and garnish with an orange
+    twist.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT]{Whiskey Smash}
+  \begin{Ingredients}
+    \item \SI{2}{\oz} Rittenhouse rye whiskey
+    \item \SI{\threequarters}{\oz} lemon juice
+    \item 3~lemon wedges
+    \item 6~mint leaves
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Muddle the lemon wedges, mint leaves, and simple syrup, add the rye, shake
+    with ice, fine-strain into an ice-filled old fashioned glass, and garnish
+    with a sprig of mint.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT]{White Birch Fizz}
+  \begin{Ingredients}
+    \item \SI{1\half*}{\oz} Plymouth gin
+    \item \SI{\threequarters}{\oz} lemon juice
+    \item \SI{\half}{\oz} Strega
+    \item \SI{\half}{\oz} Rothman \And Winter Orchard Apricot
+    \item 1~egg white
+    \item \SI{2}{\oz} \soda
+    \item a~\si{\spritz} Suze
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Dry shake ingredients except \soda and Suze, then shake with ice, strain
+    into a Collins glass, top with \soda, and spritz with Suze.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT*]{White Lady}
+  \begin{Ingredients}
+    \item \SI{2}{\oz} London dry gin
+    \item \SI{\threequarters}{\oz} Cointreau
+    \item \SI{\threequarters}{\oz} lemon juice
+    \item \SI{\quarter}{\oz} simple syrup
+    \item 1~egg white
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Dry shake ingredients, then shake with ice, and strain into an old
+    fashioned glass.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT*]{White Negroni}
+  \begin{Ingredients}
+    \item \SI{1\half*}{\oz} Plymouth gin
+    \item \SI{\threequarters}{\oz} Lillet Blanc
+    \item \SI{\half}{\oz} Suze
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Stir ingredients with ice, strain into a coupe, and garnish with a lemon
+    twist.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\PDT*]{Widow's Kiss}
+  \begin{Ingredients}
+    \item \SI{2}{\oz} Laird's straight apple brandy
+    \item \SI{\quarter}{\oz} yellow Chartreuse
+    \item \SI{\quarter}{\oz} B\'en\'edictine
+    \item 2~\si{\dashes} Angostura bitters
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Stir ingredients with ice, and strain into a coupe.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\HBar]{Untitled Cocktail \#1}
+  \begin{Ingredients}
+    \item \SI{1\half*}{\oz} Leblon cacha\c ca
+    \item \SI{\threequarters}{\oz} Meyer lemon juice
+    \item \SI{\half}{\oz} Aperol
+    \item \SI{\quarter}{\oz} Amaro CioCiaro
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Shake ingredients with ice, strain into a coupe, and garnish with a Meyer
+    lemon twist.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\HBar]{Untitled Cocktail \#2}
+  \begin{Ingredients}
+    \item \SI{2}{\oz} orange peel \And cocao nib, oak-aged Svedka vodka
+    \item \SI{\half}{\oz} Aperol
+    \item \SI{\half}{\oz} Luxardo maraschino liqueur
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Stir ingredients with ice, strain into a coupe, and garnish with an orange
+    twist.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\HBar]{Brown as a Berry}
+  \begin{Ingredients}
+    \item \SI{2}{\oz} Meyer lemon peel, oak-aged New Amsterdam gin
+    \item \SI{\half}{\oz} Meyer lemon juice
+    \item \SI{\half}{\oz} Amaro CioCiaro
+    \item \SI{\quarter}{\oz} cr\`eme de violette
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Shake ingredients with ice, strain into a coupe, and garnish with a cherry.
+  \end{Instructions}
+\end{Cocktail}
+
+\end{document}
