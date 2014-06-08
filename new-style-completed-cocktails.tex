@@ -16,9 +16,6 @@
 % for mathfrak
 \usepackage{amsmath,amssymb}
 
-%\renewcommand{\emph}[1]{\textbf{#1}}
-%\renewcommand{\nicefrac}[2]{\ensuremath{\frac{#1}{#2}}}
-
 % for footnote behavior
 \usepackage[hang,flushmargin]{footmisc} 
 \renewcommand{\thefootnote}{\fnsymbol{footnote}}
@@ -26,6 +23,11 @@
 
 \usepackage{perpage}
 \MakePerPage{footnote}
+
+%%%% manually-generated cocktail snippets:
+%% cocktail (short: coc): Cocktail environment skeleton
+%% ingredients (short: ingr): Ingredients environment skeleton
+%% instructions (short: instr): Instructions environment skeleton
 
 %%%% auto-generated cocktail snippets:
 %% SI: \SI{${1:(num)}}{${2:(unit)}} $0
@@ -88,39 +90,6 @@
 %% ss: simple syrup
 %% ew: 1~egg white
 
-%%%% helpful cocktail-mode yasnippets
-%%%% angle bracketed text (i.e. <text>) denotes field to be filled in
-%%%% underscore (_) denotes cursor position
-%%%% important ones:
-%% cocktail: cocktail environment skeleton
-%% ingredients: ingredients environment skeleton
-%% instructions: instructions environment skeleton
-%% SI: \SI{<num>}{<unit>} _
-%% --: \item \SI{<num>}{\oz} _
-%% -: \item [note: not actually one of mine]
-%% stir: Stir ingredients with ice, _
-%% stir-ex: Stir ingredients except <ingredient> with ice, _
-%% shake: Shake ingredients with ice, _
-%% shake-ex: Shake ingredients except <ingredient> with ice, _
-%%%% TODO
-%% strain-c: strain into a coupe_
-%% strain-co: strain into an ice-filled Collins glass_
-%% strain-ofg: strain into an old fashioned glass_
-%% strain-iofg: strain into an ice-filled old fashioned glass_
-%% strain-Iofg: strain into an old fashioned glass with a single large ice cube_
-%% garnish-lt: garnish with a lemon twist._
-%% garnish-ot: garnish with an orange twist._
-%% garnish-tlt: garnish with a thick lemon twist._
-%% garnish- ... you know, it occurs to me that I should write a script to
-%% generate these
-%%%% less important but still helpful ones:
-%% benedictine
-%% curacao
-%% cachaca
-%% angostura: Angostura bitters
-%% ofg: old fashioned glass
-
-
 \sisetup{%
 	range-phrase ={--},
 	range-units = single,
@@ -159,6 +128,8 @@
 \newcommand\age[1]{#1-year-old}
 \newcommand\orgeat{orgeat syrup\xspace}
 
+%% make sure you replace instances of this with \textsuperscript when you start
+%% importing old cocktails
 \newcommand\super[1]{$^\text{#1}$}
 
 %% starred version means fraction is preceeded by an integer (e.g. 1\half* = 1 1/2)
@@ -228,7 +199,6 @@
 
 \newcommand{\CurrentCocktail}{}
 
-%\newcommand{\CocktailName}[1]{\index{#1}{\huge\textbf{#1}}}
 \newcommand{\CocktailName}[2][]{\index{#2}{\huge\textbf{#2}}\hfill\makebox{#1}}
 \makeatletter
 \newcommand{\InlineCocktailSt@r}[1]{%
@@ -249,24 +219,19 @@
 
 %% optional argument gives the attribution
 \newenvironment{Cocktail}[2][]
-	{%
-		%\tt
-		\newpage%
-		\setlength{\parindent}{0pt}%
-		\CocktailName{#2}{#1}%
-		\renewcommand{\CurrentCocktail}{#2}
-		%CurrentCocktail=\CurrentCocktail
-	}
-    {}
-% 	{%
-% 		\vfill
-% 		%% prints page number for determining printing range--omit when printing
-% 		%\hfill\arabic{page}\hfill%
-% 	}
-
+{%
+  \newpage%
+  \setlength{\parindent}{0pt}%
+  \CocktailName{#2}{#1}%
+  \renewcommand{\CurrentCocktail}{#2}%
+}
+{%
+  % \vfill%
+  % %% prints page number for determining printing range--omit when printing
+  % % \hfill\arabic{page}\hfill%
+}
 
 \newcommand\Attribution[1]{\raisebox{4ex}[0pt][0pt]{#1}}
-
  \newcommand\HBarLogo{\makebox{\includegraphics[keepaspectratio=true,height=11pt]{the-hbar.pdf}}}
 
 \newcommand\EOLogo{\makebox{\includegraphics[keepaspectratio=true,height=14pt]{employees-only-logo.pdf}}}
@@ -303,16 +268,8 @@
 \newcommand\PDTStarLogo{\makebox{\includegraphics[keepaspectratio=true,height=16pt]{pdt-logo.pdf}}\hspace{0.05em}\raisebox{1.7ex}[0pt][0pt]{\textsuperscript{*}}}
 
 %\newcommand\PDTLogo{\textit{\raisebox{1ex}{P}\hspace{-0.27em}D\hspace{-0.17em}\raisebox{-1ex}{T}}}
-
 %% starred version indicates that cocktail was taken from PDT cocktail book but is *not* a PDT original
 %\newcommand\PDTStarLogo{\textit{\raisebox{1ex}{P}\hspace{-0.27em}D\hspace{-0.17em}\raisebox{-1ex}{T}\,\raisebox{1ex}[0pt][0pt]{$^*$}}}
-\newenvironment{PDTCocktail*}[1]
-	{%
-		\begin{Cocktail}[\Attribution{\PDTStarLogo}]{#1}
-	}
-	{%
-		\end{Cocktail}
-	}
 
 \newenvironment{Ingredients}
 	{%
@@ -358,12 +315,17 @@
 	
 \newcommand\Quantity[1]{\par%\vspace{2ex}
 	\textit{#1}}
+
 %% necessary because formatting commands don't want to play nicely with \SI
 %% that is to say that
 %% \textit{hello world \SI{\num{3.0e8}}{\meter\per\second}} 
 %% won't all be rendered in italics, so insteady \textit must be applied to the two arguments of \SI
 %% hence why \SIstyle is kind of confusing-looking
+%% OH, OH, I was having this problem earlier.  Nice to know I'd hacked a
+%% solution together
 \newcommand\SIstyle[3]{\SI{#1{#2}}{#1{#3}}}
+
+%% should switch these to \BookTitle
 \newcommand\Title[1]{\textit{#1}}
 
 %% when/where a(n hbar) cocktail was introduced (typically/always a Fantabulon)
