@@ -137,44 +137,44 @@
 \newcommand{\HalfNoSt@r}{\nicefrac{1}{2}}
 \newcommand{\HalfSt@r}{\HalfNoSt@r}
 \newcommand{\half}{%
-	\@ifstar%
-		{\HalfSt@r}%
-		{\HalfNoSt@r}%
+  \@ifstar%
+  {\HalfSt@r}%
+  {\HalfNoSt@r}%
 }
 \newcommand{\QuarterNoSt@r}{\nicefrac{1}{4}}
 \newcommand{\QuarterSt@r}{\QuarterNoSt@r}
 \newcommand{\quarter}{%
-	\@ifstar%
-		{\QuarterSt@r}%
-		{\QuarterNoSt@r}%
+  \@ifstar%
+  {\QuarterSt@r}%
+  {\QuarterNoSt@r}%
 }
 \newcommand{\ThreeQuartersNoSt@r}{\nicefrac{3}{4}}
 \newcommand{\ThreeQuartersSt@r}{\ThreeQuartersNoSt@r}
 \newcommand{\threequarters}{%
-	\@ifstar%
-		{\ThreeQuartersSt@r}%
-		{\ThreeQuartersNoSt@r}%
+  \@ifstar%
+  {\ThreeQuartersSt@r}%
+  {\ThreeQuartersNoSt@r}%
 }
 \newcommand{\ThirdNoSt@r}{\nicefrac{1}{3}}
 \newcommand{\ThirdSt@r}{\ThirdNoSt@r}
 \newcommand{\third}{%
-	\@ifstar%
-		{\ThirdSt@r}%
-		{\ThirdNoSt@r}%
+  \@ifstar%
+  {\ThirdSt@r}%
+  {\ThirdNoSt@r}%
 }
 \newcommand{\TwoThirdsNoSt@r}{\nicefrac{2}{3}}
 \newcommand{\TwoThirdsSt@r}{\TwoThirdsNoSt@r}
 \newcommand{\twothirds}{%
-	\@ifstar%
-		{\TwoThirdsSt@r}%
-		{\TwoThirdsNoSt@r}%
+  \@ifstar%
+  {\TwoThirdsSt@r}%
+  {\TwoThirdsNoSt@r}%
 }
 \newcommand{\EighthNoSt@r}{\nicefrac{1}{8}}
 \newcommand{\EighthSt@r}{\EighthNoSt@r}
 \newcommand{\eighth}{%
-	\@ifstar%
-		{\EighthSt@r}%
-		{\EighthNoSt@r}%
+  \@ifstar%
+  {\EighthSt@r}%
+  {\EighthNoSt@r}%
 }
 \makeatother
 
@@ -187,33 +187,33 @@
 %% \printindex reverts to plain pagestyle, so redefine plain to supress unwanted behavior
 \usepackage{fancyhdr}
 \fancypagestyle{plain}{%
-	\fancyhf{}
-	\renewcommand{\headrulewidth}{0pt}
-	\renewcommand{\headheight}{0pt}
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\headheight}{0pt}
 }
 
 %% you can also change ``References'' to ``Bibliography" in article class
-%\renewcommmand{\refname}{Bibliography}
+% \renewcommmand{\refname}{Bibliography}
 %% and in report and book class, the opposite
-%\renewcommand{\bibname}{References}
+% \renewcommand{\bibname}{References}
 
 \newcommand{\CurrentCocktail}{}
 
 \newcommand{\CocktailName}[2][]{\index{#2}{\huge\textbf{#2}}\hfill\makebox{#1}}
 \makeatletter
 \newcommand{\InlineCocktailSt@r}[1]{%
-	\textsl{#1}%
-	\ignorespacesafterend
+  \textsl{#1}%
+  \ignorespacesafterend
 }
 \newcommand{\InlineCocktailNoSt@r}[1]{%
-	\InlineCocktailSt@r{#1}%
-	%\index{#1}%
-	\index{\CurrentCocktail!#1}%
+  \InlineCocktailSt@r{#1}%
+  % \index{#1}%
+  \index{\CurrentCocktail!#1}%
 }
 \newcommand{\InlineCocktail}{%
-	\@ifstar%
-		{\InlineCocktailSt@r}%
-		{\InlineCocktailNoSt@r}%
+  \@ifstar%
+  {\InlineCocktailSt@r}%
+  {\InlineCocktailNoSt@r}%
 }
 \makeatother
 
@@ -232,9 +232,9 @@
 }
 
 \newcommand\Attribution[1]{\raisebox{4ex}[0pt][0pt]{#1}}
- \newcommand\HBarLogo{\makebox{\includegraphics[keepaspectratio=true,height=11pt]{the-hbar.pdf}}}
+ \newcommand\HBarLogo{\makebox{\includegraphics[keepaspectratio=true,height=11pt]{./media/the-hbar-logo/the-hbar-logo.pdf}}}
 
-\newcommand\EOLogo{\makebox{\includegraphics[keepaspectratio=true,height=14pt]{employees-only-logo.pdf}}}
+\newcommand\EOLogo{\makebox{\includegraphics[keepaspectratio=true,height=14pt]{./media/employees-only-logo/employees-only-logo.pdf}}}
 
 \newcommand\MattLinzmeierLogo{\makebox{\ensuremath{m\ell}}}
 
@@ -253,68 +253,70 @@
 \setcounter{AltCocktail}{1}
 \newcommand\FNSymbolLogo[1][1]{\setcounter{AltCocktail}{#1}{\Large{\fnsymbol{AltCocktail}}}\setcounter{AltCocktail}{1}}
 \newenvironment{AltCocktail}[2][1]
-	{%
-		\begin{Cocktail}[\Attribution{\FNSymbolLogo[#1]}]{#2}
-	}
-	{%
-		\end{Cocktail}
-	}
+{%
+  \begin{Cocktail}[\Attribution{\FNSymbolLogo[#1]}]{#2}
+  }
+  {%
+  \end{Cocktail}
+}
 
 %% John Squier logo
 \newcommand\JohnSquierLogo{\textit{\raisebox{1ex}{J}\hspace{-0.22em}S}}
 
 %%% PDT logo
-\newcommand\PDTLogo{\makebox{\includegraphics[keepaspectratio=true,height=16pt]{pdt-logo.pdf}}}
-\newcommand\PDTStarLogo{\makebox{\includegraphics[keepaspectratio=true,height=16pt]{pdt-logo.pdf}}\hspace{0.05em}\raisebox{1.7ex}[0pt][0pt]{\textsuperscript{*}}}
+\newcommand\PDTLogo{\makebox{\includegraphics[keepaspectratio=true,height=16pt]{./media/pdt-logo/pdt-logo.pdf}}}
+\newcommand\PDTStarLogo{\makebox{\includegraphics[keepaspectratio=true,height=16pt]{./media/pdt-logo/pdt-logo.pdf}}\hspace{0.05em}\raisebox{1.7ex}[0pt][0pt]{\textsuperscript{*}}}
 
-%\newcommand\PDTLogo{\textit{\raisebox{1ex}{P}\hspace{-0.27em}D\hspace{-0.17em}\raisebox{-1ex}{T}}}
+% \newcommand\PDTLogo{\textit{\raisebox{1ex}{P}\hspace{-0.27em}D\hspace{-0.17em}\raisebox{-1ex}{T}}}
 %% starred version indicates that cocktail was taken from PDT cocktail book but is *not* a PDT original
-%\newcommand\PDTStarLogo{\textit{\raisebox{1ex}{P}\hspace{-0.27em}D\hspace{-0.17em}\raisebox{-1ex}{T}\,\raisebox{1ex}[0pt][0pt]{$^*$}}}
+% \newcommand\PDTStarLogo{\textit{\raisebox{1ex}{P}\hspace{-0.27em}D\hspace{-0.17em}\raisebox{-1ex}{T}\,\raisebox{1ex}[0pt][0pt]{$^*$}}}
 
 \newenvironment{Ingredients}
-	{%
-		\large
-		\begin{list}{}{%
-		\setlength{\leftmargin}{0pt}
-		\setlength{\listparindent}{0pt}
-		\setlength{\itemindent}{0pt}
-		\setlength{\labelwidth}{0pt}
-		\setlength{\labelsep}{0pt}
-		}
-	}
-	{%
-		\end{list}%
-		\ignorespacesafterend
-	}
+{%
+  \large
+  \begin{list}
+    {}
+    {%
+      \setlength{\leftmargin}{0pt}%
+      \setlength{\listparindent}{0pt}%
+      \setlength{\itemindent}{0pt}%
+      \setlength{\labelwidth}{0pt}%
+      \setlength{\labelsep}{0pt}%
+    }
+  }
+  {%
+  \end{list}%
+  \ignorespacesafterend
+}
 
 \newenvironment{Instructions}
-	{%
-		\vspace{6ex}
-		\hfill\begin{minipage}[!h]{0.7\textwidth}
-		\parindent=0pt
-		\setlength{\parskip}{2ex}
-	}
-	{%
-		\end{minipage}%
-		\vspace{2ex}%
-		\ignorespacesafterend
-	}
+{%
+  \vspace{6ex}
+  \hfill\begin{minipage}[!h]{0.7\textwidth}
+    \parindent=0pt
+    \setlength{\parskip}{2ex}
+  }
+  {%
+  \end{minipage}%
+  \vspace{2ex}%
+  \ignorespacesafterend
+}
 
 \newenvironment{Instructions*}[1]
-	{%
-		\vspace{6ex}
-		\hfill\begin{minipage}[!h]{#1}
-		\parindent=0pt
-		\setlength{\parskip}{2ex}
-	}
-	{%
-		\end{minipage}%
-		\vspace{2ex}%
-		\ignorespacesafterend
-	}
-	
+{%
+  \vspace{6ex}
+  \hfill\begin{minipage}[!h]{#1}
+    \parindent=0pt
+    \setlength{\parskip}{2ex}
+  }
+  {%
+  \end{minipage}%
+  \vspace{2ex}%
+  \ignorespacesafterend
+}
+
 \newcommand\Quantity[1]{\par%\vspace{2ex}
-	\textit{#1}}
+  \textit{#1}}
 
 %% necessary because formatting commands don't want to play nicely with \SI
 %% that is to say that
@@ -329,27 +331,23 @@
 \newcommand\Title[1]{\textit{#1}}
 
 %% when/where a(n hbar) cocktail was introduced (typically/always a Fantabulon)
-%\newcommand\FantabulonSummerCamp[1][1]{\footnotetext[#1]{Fantabulon: Summer Camp!\ (June 2013)}}
+% \newcommand\FantabulonSummerCamp[1][1]{\footnotetext[#1]{Fantabulon: Summer Camp!\ (June 2013)}}
 \newcommand\IntroducedAt[3]{\footnotetext[#1]{#2\ (#3)}}
 \newcommand\FantabulonSummerCamp[1][1]{\IntroducedAt{#1}{Fantabulon: Summer Camp!}{June 2013}}
 \newcommand\FantabulonAvalanche[1][1]{\IntroducedAt{#1}{Fantabulon: Avalanche!}{January 2014}}
 
-
-	
 %% other formatting stuff
 % tipa is used for \textprimstress symbol, which shows stressed syllable in pronunciation guides
 \usepackage{tipa}
 \newcommand{\pronunciation}[1]{\textbar#1\textbar}
 \usepackage{textcomp}
 \newcommand{\No}{\textnumero\,}
-%\renewcommand{\No}{\textsuperscript{\#}}
-%\renewcommand{\No}{N\raisebox{-0.1ex}{\textsuperscript{\underline{o}}}}
-%\renewcommand{\No}{N\protect\raisebox{0.5ex}{\underline{o}}}
-%\newcommand\MyNumero{N\raisebox{0.9ex}[0pt][0pt]{\tiny{\underline{o}}}}
-%\newcommand\No{\protect\MyNumero}
+% \renewcommand{\No}{\textsuperscript{\#}}
+% \renewcommand{\No}{N\raisebox{-0.1ex}{\textsuperscript{\underline{o}}}}
+% \renewcommand{\No}{N\protect\raisebox{0.5ex}{\underline{o}}}
+% \newcommand\MyNumero{N\raisebox{0.9ex}[0pt][0pt]{\tiny{\underline{o}}}}
+% \newcommand\No{\protect\MyNumero}
 \renewcommand{\And}{\&\xspace}
-
-
 
 \newcommand{\LilletFootnoteText}{Cocchi Americano is said to more closely match the orginal Kina Lillet than Lillet Blanc's current formulation.}
 \newcommand{\Lillet}{Lillet Blanc or Cocchi Americano}
@@ -368,8 +366,8 @@
 \newcommand\PDTNoSt@r{\Attribution{\PDTLogo}}
 \newcommand\PDT{%
   \@ifstar%
-    {\PDTSt@r}%
-    {\PDTNoSt@r}%
+  {\PDTSt@r}%
+  {\PDTNoSt@r}%
 }
 \makeatother
 
@@ -381,22 +379,22 @@
 % see
 % http://tex.stackexchange.com/questions/145892/how-do-i-use-the-etoolbox-package-to-check-if-an-argument-to-a-macro-was-defined for usage
 \DefineFNsymbols*{web}{\websymbol}
-%\usepackage[iso]{datetime}
-%\yyyymmdddate
-%\renewcommand\dateseparator{-}
+% \usepackage[iso]{datetime}
+% \yyyymmdddate
+% \renewcommand\dateseparator{-}
 % \web is kind of fragile inside of the optional argument of Cocktail, but
 % it's probably going to be infrequently used, so whatever.  In any case, to
 % deal with the fragility, enclose \web in curly braces
 % source:
 % http://stackoverflow.com/questions/12890695/optional-argument-inside-optional-argument-misparsed
 \DefineFNsymbols*{lamportnostar}[math]{\dagger\ddagger\S\P\|{\dagger\dagger}{\ddagger\ddagger}}
-%\setfnsymbol{lamportnostar}
+% \setfnsymbol{lamportnostar}
 \newcommand\web[2][]{\Attribution{\large\websymbol}%
   \setfnsymbol{web}%
   \footnotetext[1]{\url{#2}%
     \ifstrempty{#1}%
-      {}%
-      { (viewed on #1)}%
+    {}%
+    { (viewed on #1)}%
   }%
   \setfnsymbol{lamport*}%
 }
@@ -509,6 +507,10 @@
     \item \SI{1}{\oz} Luxardo maraschino liqueur
     \item a \si{\dash} Angostura bitters
   \end{Ingredients}
+
+  \begin{Instructions}
+    (unsure)
+  \end{Instructions}
 \end{Cocktail}
 
 \begin{Cocktail}[\NobleRot]{Sex with a View}
@@ -553,6 +555,11 @@
     \item \SI{\half}{\oz} Marie Brizard orange cura\c cao
     \item \SI{\half}{\oz} Kassatly Chtaura \orgeat
   \end{Ingredients}
+
+  \begin{Instructions}
+    Shake ingredients with ice, strain into a pebble ice-filled old fashioned
+    glass, and garnish with a sprig of mint.
+  \end{Instructions}
 \end{Cocktail}
 
 \begin{Cocktail}[\PDT*]{Margarita}
@@ -722,7 +729,7 @@
 \end{Cocktail}
 
 \begin{Cocktail}[\PDT*]{Navy Grog}
-  \begin{Ingredients}
+  \begin{Ingredients}\normalsize
     \item \SI{1}{\oz} Gosling's Black Seal rum
     \item \SI{1}{\oz} Appleton Reserve rum
     \item \SI{1}{\oz} El Dorado \age{15} rum
