@@ -22,6 +22,7 @@
 *.fdb_latexmk
 /auto
 _region_.tex
+/to-be-processed/auto
 
 # Project-specific cruft
 *.jpg
