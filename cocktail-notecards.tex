@@ -24,6 +24,14 @@
 \usepackage{perpage}
 \MakePerPage{footnote}
 
+\usepackage{marvosym}
+\usepackage{footmisc}
+\usepackage[hyphens]{url} % breaks line at hyphens, too
+\usepackage{etoolbox} % this is the thing to use instead of the ifthen package
+% see
+% http://tex.stackexchange.com/questions/145892/how-do-i-use-the-etoolbox-package-to-check-if-an-argument-to-a-macro-was-defined for usage
+
+
 %%%% manually-generated cocktail snippets:
 %% cocktail (short: coc): Cocktail environment skeleton
 %% ingredients (short: ingr): Ingredients environment skeleton
@@ -232,46 +240,6 @@
   % % \hfill\arabic{page}\hfill%
 }
 
-\newcommand\Attribution[1]{\raisebox{2ex}[0pt][0pt]{#1}}
- \newcommand\HBarLogo{\makebox{\includegraphics[keepaspectratio=true,height=11pt]{./media/the-hbar-logo/the-hbar-logo.pdf}}}
-
-\newcommand\EOLogo{\makebox{\includegraphics[keepaspectratio=true,height=14pt]{./media/employees-only-logo/employees-only-logo.pdf}}}
-
-\newcommand\MattLinzmeierLogo{\makebox{\ensuremath{m\ell}}}
-
-%% Savoy Cocktail Book
-%\newcommand\SavoyLogo{\raisebox{1ex}{$\mathscr{S}$}\!{$\mathscr{C}$}\raisebox{-1ex}{$\mathscr{B}$}}
-\newcommand\SavoyLogo{\textit{\raisebox{1ex}{S}\!C\raisebox{-1ex}{B}}}
-
-%% Milk and Honey
-\newcommand\MilkAndHoneyLogo{\textit{\raisebox{1ex}{$\mathscr{M}$}\!\&\raisebox{-1ex}{$\mathscr{H}$}}}
-
-%% Comme Ca
-\newcommand\CommeCaLogo{\textit{\LARGE\raisebox{0.45ex}{c}\hspace{-0.27em}\c c}}
-
-%% AltCocktail
-\newcounter{AltCocktail}
-\setcounter{AltCocktail}{1}
-\newcommand\FNSymbolLogo[1][1]{\setcounter{AltCocktail}{#1}{\Large{\fnsymbol{AltCocktail}}}\setcounter{AltCocktail}{1}}
-\newenvironment{AltCocktail}[2][1]
-{%
-  \begin{Cocktail}[\Attribution{\FNSymbolLogo[#1]}]{#2}
-  }
-  {%
-  \end{Cocktail}
-}
-
-%% John Squier logo
-\newcommand\JohnSquierLogo{\textit{\raisebox{1ex}{J}\hspace{-0.22em}S}}
-
-%%% PDT logo
-\newcommand\PDTLogo{\makebox{\includegraphics[keepaspectratio=true,height=16pt]{./media/pdt-logo/pdt-logo.pdf}}}
-\newcommand\PDTStarLogo{\makebox{\includegraphics[keepaspectratio=true,height=16pt]{./media/pdt-logo/pdt-logo.pdf}}\hspace{0.05em}\raisebox{1.7ex}[0pt][0pt]{\textsuperscript{*}}}
-
-% \newcommand\PDTLogo{\textit{\raisebox{1ex}{P}\hspace{-0.27em}D\hspace{-0.17em}\raisebox{-1ex}{T}}}
-%% starred version indicates that cocktail was taken from PDT cocktail book but is *not* a PDT original
-% \newcommand\PDTStarLogo{\textit{\raisebox{1ex}{P}\hspace{-0.27em}D\hspace{-0.17em}\raisebox{-1ex}{T}\,\raisebox{1ex}[0pt][0pt]{$^*$}}}
-
 \newenvironment{Ingredients}
 {%
   \large
@@ -329,7 +297,8 @@
 \newcommand\SIstyle[3]{\SI{#1{#2}}{#1{#3}}}
 
 %% should switch these to \BookTitle
-\newcommand\Title[1]{\textit{#1}}
+%% \Title has gone from deprecated to unsupported
+%\newcommand\Title[1]{\textit{#1}}
 
 %% when/where a(n hbar) cocktail was introduced (typically/always a Fantabulon)
 % \newcommand\FantabulonSummerCamp[1][1]{\footnotetext[#1]{Fantabulon: Summer Camp!\ (June 2013)}}
@@ -356,41 +325,52 @@
 % for certain longer notecards
 \usepackage{multicol}
 
+\newcommand\yields[1]{\par\smallskip{\sl Yields #1}}
+
+\newcommand\BookTitle[1]{\textit{#1}}
+
+%%%%%%%%%%%%%%%%% where logos for sources are defined %%%%%%%%%%%%%%%%%
+\newcommand\Attribution[1]{\raisebox{2ex}[0pt][0pt]{#1}}
+
+
+%%%% The H Bar (i.e. my bar/the Fantabulon! house bar) %%%%
+\newcommand\HBarLogo{\makebox{\includegraphics[keepaspectratio=true,%
+	height=11pt]%
+	{./media/the-hbar-logo/the-hbar-logo.pdf}%
+  }%
+}
+
 \newcommand\HBar{\Attribution{\HBarLogo}}
 
-\newcommand\NobleRotLogo{\raisebox{0.9ex}[0pt]{\(\mathfrak{N}\)}%
-  \(\mathfrak{R}\)}
-\newcommand\NobleRot{\Attribution{\NobleRotLogo}}
+%%%% alternate recipes of cocktails I've already transcribed %%%%
+\newcounter{AltCocktail}
+\setcounter{AltCocktail}{1}
+\newcommand\FNSymbolLogo[1][1]{\setcounter{AltCocktail}{#1}{\Large{\fnsymbol{AltCocktail}}}\setcounter{AltCocktail}{1}}
+\newenvironment{AltCocktail}[2][1]
+{%
+  \begin{Cocktail}[\Attribution{\FNSymbolLogo[#1]}]{#2}
+  }
+  {%
+  \end{Cocktail}
+}
 
+%% macros that create macros
+%% source:
+%% http://tex.stackexchange.com/questions/25452/how-to-define-a-macro-to-create-a-new-macro-with-a-name-passed-as-its-argument
+%% DRY LaTeX!!
 \makeatletter
-\newcommand\PDTSt@r{\Attribution{\PDTStarLogo}}
-\newcommand\PDTNoSt@r{\Attribution{\PDTLogo}}
-\newcommand\PDT{%
-  \@ifstar%
-  {\PDTSt@r}%
-  {\PDTNoSt@r}%
+\newcommand\NewSource[2]{\expandafter\newcommand\csname #1\endcsname%
+  {%
+	\@ifstar%
+	{\Attribution{#2\textsuperscript{*}}}%
+	{\Attribution{#2}}%
+  }%
 }
 \makeatother
 
-\newcommand\MH{\Attribution{\MilkAndHoneyLogo}}
-\newcommand\Savoy{\Attribution{\SavoyLogo}}
-
-\usepackage{marvosym}
+%%%% cocktails found on the web %%%%
 \newcommand\websymbol{\MVAt}
-\usepackage{footmisc}
-\usepackage[hyphens]{url} % breaks line at hyphens, too
-\usepackage{etoolbox} % this is the thing to use instead of the ifthen package
-% see
-% http://tex.stackexchange.com/questions/145892/how-do-i-use-the-etoolbox-package-to-check-if-an-argument-to-a-macro-was-defined for usage
 \DefineFNsymbols*{web}{\websymbol}
-% \usepackage[iso]{datetime}
-% \yyyymmdddate
-% \renewcommand\dateseparator{-}
-% \web is kind of fragile inside of the optional argument of Cocktail, but
-% it's probably going to be infrequently used, so whatever.  In any case, to
-% deal with the fragility, enclose \web in curly braces
-% source:
-% http://stackoverflow.com/questions/12890695/optional-argument-inside-optional-argument-misparsed
 \DefineFNsymbols*{lamportnostar}[math]{\dagger\ddagger\S\P\|{\dagger\dagger}{\ddagger\ddagger}}
 % \setfnsymbol{lamportnostar}
 \newcommand\web[2][]{\Attribution{\large\websymbol}%
@@ -403,41 +383,82 @@
   \setfnsymbol{lamport*}%
 }
 
-\newcommand\yields[1]{\par\smallskip{\sl Yields #1}}
+%% note that the H Bar doesn't have starred cocktails because if they were
+%% going to be starred, they'd be cited elsewhere
+%% as for the web stuff, that could be a bit trickier -- try to fix it?
 
-\newcommand\BookTitle[1]{\textit{#1}}
+%%%% Employees Only, New York %%%%
+\newcommand\EOLogo{\makebox{\includegraphics[keepaspectratio=true,height=14pt]{./media/employees-only-logo/employees-only-logo.pdf}}}
+\NewSource{EO}{\EOLogo}
 
+%%%% Matt Linzmeier %%%%
+\newcommand\MattLinzmeierLogo{\makebox{\ensuremath{m\ell}}}
+\NewSource{Matt}{\MattLinzmeierLogo}
+
+%%%% Savoy Cocktail Book %%%%
+\newcommand\SavoyLogo{\textit{\raisebox{1ex}{S}\!C\raisebox{-1ex}{B}}}
+%\newcommand\Savoy{\Attribution{\SavoyLogo}}
+\NewSource{Savoy}{\SavoyLogo}
+
+%%%% Milk and Honey, New York %%%%
+\newcommand\MilkAndHoneyLogo{\textit{\raisebox{1ex}{$\mathscr{M}$}\!\&\raisebox{-1ex}{$\mathscr{H}$}}}
+%\newcommand\MH{\Attribution{\MilkAndHoneyLogo}}
+\NewSource{MH}{\MilkAndHoneyLogo}
+
+%%%% Comme Ca, Las Vegas %%%%
+\newcommand\CommeCaLogo{\textit{\LARGE\raisebox{0.45ex}{c}\hspace{-0.27em}\c c}}
+\NewSource{CommeCa}{\CommeCaLogo}
+
+%%%% John Squier %%%%
+\newcommand\JohnSquierLogo{\textit{\raisebox{1ex}{J}\hspace{-0.22em}S}}
+\NewSource{JSquier}{\JohnSquierLogo}
+
+%%%% PDT logo %%%%
+\newcommand\PDTLogo{\makebox{\includegraphics[keepaspectratio=true,height=16pt]{./media/pdt-logo/pdt-logo.pdf}}}
+% \newcommand\PDTStarLogo{\makebox{\includegraphics[keepaspectratio=true,height=16pt]{./media/pdt-logo/pdt-logo.pdf}}\hspace{0.05em}\raisebox{1.7ex}[0pt][0pt]{\textsuperscript{*}}}
+
+% \newcommand\PDTLogo{\textit{\raisebox{1ex}{P}\hspace{-0.27em}D\hspace{-0.17em}\raisebox{-1ex}{T}}}
+
+% \makeatletter
+% \newcommand\PDTSt@r{\Attribution{\PDTStarLogo}}
+% \newcommand\PDTNoSt@r{\Attribution{\PDTLogo}}
+% \newcommand\PDT{%
+%   \@ifstar%
+%   {\PDTSt@r}%
+%   {\PDTNoSt@r}%
+% }
+% \makeatother
+
+\NewSource{PDT}{\PDTLogo}
+
+%%%% Noble Rot %%%%
+\newcommand\NobleRotLogo{\raisebox{0.9ex}[0pt]{\(\mathfrak{N}\)}%
+  \(\mathfrak{R}\)}
+%\newcommand\NobleRot{\Attribution{\NobleRotLogo}}
+\NewSource{NobleRot}{\NobleRotLogo}
+
+%%%% Good Food blog %%%%
 \newcommand\GoodFoodLogo{GF}
-\newcommand\GoodFood{\Attribution{\GoodFoodLogo}}
+%\newcommand\GoodFood{\Attribution{\GoodFoodLogo}}
+\NewSource{GoodFood}{\GoodFoodLogo}
 
+%%%% Trader Vic's Bartenders Guide (in my case, 1972 edition) %%%%
 \newcommand\TraderVicsLogo{TV}
-\newcommand\TraderVicsStarLogo{TV\textsuperscript{*}}
+% \newcommand\TraderVicsStarLogo{TV\textsuperscript{*}}
 
-\makeatletter
-\newcommand\TraderVicsSt@r{\Attribution{\TraderVicsStarLogo}}
-\newcommand\TraderVicsNoSt@r{\Attribution{\TraderVicsLogo}}
-\newcommand\TraderVics{%
-  \@ifstar%
-  {\TraderVicsSt@r}%
-  {\TraderVicsNoSt@r}%
-}
-\makeatother
+% \makeatletter
+% \newcommand\TraderVicsSt@r{\Attribution{\TraderVicsStarLogo}}
+% \newcommand\TraderVicsNoSt@r{\Attribution{\TraderVicsLogo}}
+% \newcommand\TraderVics{%
+%   \@ifstar%
+%   {\TraderVicsSt@r}%
+%   {\TraderVicsNoSt@r}%
+% }
+% \makeatother
+\NewSource{TraderVics}{\TraderVicsLogo}
 
-%% macros that create macros
-%% source:
-%% http://tex.stackexchange.com/questions/25452/how-to-define-a-macro-to-create-a-new-macro-with-a-name-passed-as-its-argument
-%% DRY LaTeX!!
-\makeatletter
-\newcommand\NewLogo[2]{\expandafter\newcommand\csname #1\endcsname%
-  {%
-	\@ifstar%
-	{\Attribution{#2\textsuperscript{*}}}%
-	{\Attribution{#2}}%
-  }%
-}
-\makeatother
-
-\NewLogo{MrBoston}{MrB}
+%%%% Mr. Boston's Bartenders Guide %%%%
+\NewSource{MrBoston}{MrB}
 
 
 \begin{document}
