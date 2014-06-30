@@ -359,14 +359,16 @@
 %% http://tex.stackexchange.com/questions/25452/how-to-define-a-macro-to-create-a-new-macro-with-a-name-passed-as-its-argument
 %% DRY LaTeX!!
 \makeatletter
-\newcommand\NewSource[2]{\expandafter\newcommand\csname #1\endcsname%
+\newcommand\NewSource[3]{\expandafter\newcommand\csname #1\endcsname%
   {%
 	\@ifstar%
-	{\Attribution{#2\textsuperscript{*}}}%
+	{\Attribution{#3}}%
 	{\Attribution{#2}}%
   }%
 }
 \makeatother
+
+\newcommand\StarLogo[1]{#1\textsuperscript{*}}
 
 %%%% cocktails found on the web %%%%
 \newcommand\websymbol{\MVAt}
@@ -389,33 +391,32 @@
 
 %%%% Employees Only, New York %%%%
 \newcommand\EOLogo{\makebox{\includegraphics[keepaspectratio=true,height=14pt]{./media/employees-only-logo/employees-only-logo.pdf}}}
-\NewSource{EO}{\EOLogo}
+\NewSource{EO}{\EOLogo}{\StarLogo{\EOLogo}}
 
 %%%% Matt Linzmeier %%%%
 \newcommand\MattLinzmeierLogo{\makebox{\ensuremath{m\ell}}}
-\NewSource{Matt}{\MattLinzmeierLogo}
+\NewSource{Matt}{\MattLinzmeierLogo}{\StarLogo{\MattLinzmeierLogo}}
 
 %%%% Savoy Cocktail Book %%%%
 \newcommand\SavoyLogo{\textit{\raisebox{1ex}{S}\!C\raisebox{-1ex}{B}}}
 %\newcommand\Savoy{\Attribution{\SavoyLogo}}
-\NewSource{Savoy}{\SavoyLogo}
+\NewSource{Savoy}{\SavoyLogo}{\StarLogo{\SavoyLogo}}
 
 %%%% Milk and Honey, New York %%%%
 \newcommand\MilkAndHoneyLogo{\textit{\raisebox{1ex}{$\mathscr{M}$}\!\&\raisebox{-1ex}{$\mathscr{H}$}}}
 %\newcommand\MH{\Attribution{\MilkAndHoneyLogo}}
-\NewSource{MH}{\MilkAndHoneyLogo}
+\NewSource{MH}{\MilkAndHoneyLogo}{\StarLogo{\MilkAndHoneyLogo}}
 
 %%%% Comme Ca, Las Vegas %%%%
 \newcommand\CommeCaLogo{\textit{\LARGE\raisebox{0.45ex}{c}\hspace{-0.27em}\c c}}
-\NewSource{CommeCa}{\CommeCaLogo}
+\NewSource{CommeCa}{\CommeCaLogo}{\StarLogo{\CommeCaLogo}}
 
 %%%% John Squier %%%%
 \newcommand\JohnSquierLogo{\textit{\raisebox{1ex}{J}\hspace{-0.22em}S}}
-\NewSource{JSquier}{\JohnSquierLogo}
+\NewSource{JSquier}{\JohnSquierLogo}{\StarLogo{\JohnSquierLogo}}
 
 %%%% PDT logo %%%%
-\newcommand\PDTLogo{\makebox{\includegraphics[keepaspectratio=true,height=16pt]{./media/pdt-logo/pdt-logo.pdf}}}
-% \newcommand\PDTStarLogo{\makebox{\includegraphics[keepaspectratio=true,height=16pt]{./media/pdt-logo/pdt-logo.pdf}}\hspace{0.05em}\raisebox{1.7ex}[0pt][0pt]{\textsuperscript{*}}}
+\newcommand\PDTLogo{\makebox{\includegraphics[keepaspectratio=true,height=16pt]{./media/pdt-logo/pdt-logo.pdf}}} \newcommand\PDTStarLogo{\makebox{\includegraphics[keepaspectratio=true,height=16pt]{./media/pdt-logo/pdt-logo.pdf}}\hspace{0.05em}\raisebox{1.7ex}[0pt][0pt]{\textsuperscript{*}}}
 
 % \newcommand\PDTLogo{\textit{\raisebox{1ex}{P}\hspace{-0.27em}D\hspace{-0.17em}\raisebox{-1ex}{T}}}
 
@@ -429,18 +430,18 @@
 % }
 % \makeatother
 
-\NewSource{PDT}{\PDTLogo}
+\NewSource{PDT}{\PDTLogo}{\PDTStarLogo}
 
 %%%% Noble Rot %%%%
 \newcommand\NobleRotLogo{\raisebox{0.9ex}[0pt]{\(\mathfrak{N}\)}%
   \(\mathfrak{R}\)}
 %\newcommand\NobleRot{\Attribution{\NobleRotLogo}}
-\NewSource{NobleRot}{\NobleRotLogo}
+\NewSource{NobleRot}{\NobleRotLogo}{\StarLogo{\NobleRotLogo}}
 
 %%%% Good Food blog %%%%
 \newcommand\GoodFoodLogo{GF}
 %\newcommand\GoodFood{\Attribution{\GoodFoodLogo}}
-\NewSource{GoodFood}{\GoodFoodLogo}
+\NewSource{GoodFood}{\GoodFoodLogo}{\StarLogo{\GoodFoodLogo}}
 
 %%%% Trader Vic's Bartenders Guide (in my case, 1972 edition) %%%%
 \newcommand\TraderVicsLogo{TV}
@@ -455,10 +456,10 @@
 %   {\TraderVicsNoSt@r}%
 % }
 % \makeatother
-\NewSource{TraderVics}{\TraderVicsLogo}
+\NewSource{TraderVics}{\TraderVicsLogo}{\StarLogo{\TraderVicsLogo}}
 
 %%%% Mr. Boston's Bartenders Guide %%%%
-\NewSource{MrBoston}{MrB}
+\NewSource{MrBoston}{MrB}{\StarLogo{MrB}}
 
 
 \begin{document}
