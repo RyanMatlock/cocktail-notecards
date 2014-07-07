@@ -303,8 +303,12 @@
 %% when/where a(n hbar) cocktail was introduced (typically/always a Fantabulon)
 % \newcommand\FantabulonSummerCamp[1][1]{\footnotetext[#1]{Fantabulon: Summer Camp!\ (June 2013)}}
 \newcommand\IntroducedAt[3]{\footnotetext[#1]{#2\ (#3)}}
-\newcommand\FantabulonSummerCamp[1][1]{\IntroducedAt{#1}{Fantabulon: Summer Camp!}{June 2013}}
-\newcommand\FantabulonAvalanche[1][1]{\IntroducedAt{#1}{Fantabulon: Avalanche!}{January 2014}}
+\newcommand\FantabulonSummerCamp[1][1]{\IntroducedAt{#1}{Fantabulon: Summer%
+	Camp!}{June 2013}}
+\newcommand\FantabulonAvalanche[1][1]{\IntroducedAt{#1}{Fantabulon:%
+	Avalanche!}{January 2014}}
+\newcommand\FantabulonUnderTheSea[1][1]{\IntroducedAt{#1}{Fantabulon:%
+	Under the Sea!}{July 2014}}
 
 %% other formatting stuff
 % tipa is used for \textprimstress symbol, which shows stressed syllable in pronunciation guides
@@ -3219,6 +3223,52 @@
 	This drink is a riff on the classic \InlineCocktail*{Presbyterian}
 	cocktail.
   \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\HBar]{\#1}
+  \begin{Ingredients}
+	\item \SI{1}{\oz} 10 Cane rum
+	\item \SI{\threequarters}{\oz} Myers's dark rum
+	\item \SI{\threequarters}{\oz} Don's mix
+	\item \SI{\half}{\oz} Aperol
+  \end{Ingredients}
+
+  \begin{Instructions}
+	Shake ingredients with ice, strain into a coupe, and garnish with a lemon
+	twist.
+  \end{Instructions}
+  \FantabulonUnderTheSea
+\end{Cocktail}
+
+\begin{Cocktail}[\HBar]{\#2}
+  \begin{Ingredients}
+	\item \SI{\threequarters}{\oz} 10 Cane rum
+    \item \SI{\threequarters}{\oz} Laird's straight apple brandy
+	\item \SI{\half}{\oz} Don's mix
+	\item \SI{\half}{\oz} Carpano Antica sweet vermouth
+	\item \SIrange{1}{2}{\oz} grapefruit soda
+  \end{Ingredients}
+
+  \begin{Instructions}
+	Shake ingredients except grapefruit soda with ice, strain into an
+	ice-filled Collins glass, and top with grapefruit soda.
+  \end{Instructions}
+  \FantabulonUnderTheSea
+\end{Cocktail}
+
+\begin{Cocktail}[\HBar]{\#3}
+  \begin{Ingredients}
+	\item \SI{1}{\oz} Appleton Estate VX golden rum
+	\item \SI{\threequarters}{\oz} Leblon cacha\c ca
+	\item \SI{\half}{\oz} Don's mix
+	\item \SI{\half}{\oz} Coco Lopez cream of coconut
+	\item \SI{\half}{\oz} Aperol
+  \end{Ingredients}
+
+  \begin{Instructions}
+	Shake ingredients with ice, and strain into a coupe.
+  \end{Instructions}
+  \FantabulonUnderTheSea
 \end{Cocktail}
 
 \end{document}
