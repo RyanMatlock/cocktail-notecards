@@ -31,6 +31,10 @@ _region_.tex
 *.eps
 *.ps
 
+# I shouldn't include large binary files
+# see https://robinwinslow.co.uk/2013/06/11/dont-ever-commit-binary-files-to-git/
+cocktail-notecards.pdf
+
 # Python cruft
 *.py~
 
