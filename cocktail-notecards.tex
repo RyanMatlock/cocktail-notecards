@@ -394,8 +394,14 @@
 %% as for the web stuff, that could be a bit trickier -- try to fix it?
 
 %%%% Employees Only, New York %%%%
-\newcommand\EOLogo{\makebox{\includegraphics[keepaspectratio=true,height=14pt]{./media/employees-only-logo/employees-only-logo.pdf}}}
-\NewSource{EO}{\EOLogo}{\StarLogo{\EOLogo}}
+\newcommand\EmployeesOnlyLogo{\makebox{%
+	\includegraphics[keepaspectratio=true,height=14pt]%
+	{./media/employees-only-logo/employees-only-logo.pdf}}}
+\newcommand\EmployeesOnlyStarLogo{\makebox{%
+	\includegraphics[keepaspectratio=true,height=14pt]%
+	{./media/employees-only-logo/employees-only-logo.pdf}}\hspace{0.05em}%
+    \raisebox{1.5ex}[0pt][0pt]{\textsuperscript{*}}}
+\NewSource{EO}{\EmployeesOnlyLogo}{\EmployeesOnlyStarLogo}
 
 %%%% Matt Linzmeier %%%%
 \newcommand\MattLinzmeierLogo{\makebox{\ensuremath{m\ell}}}
@@ -3269,6 +3275,188 @@
 	Shake ingredients with ice, and strain into a coupe.
   \end{Instructions}
   \FantabulonUnderTheSea
+\end{Cocktail}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%% Employee's Only %%%%%%%%%%%
+%%%%%%%% Check that everything is ok!!
+\begin{Cocktail}[\EO*]{Martinez}
+	\begin{Ingredients}
+	\item \SI{2}{\oz} London dry gin
+	\item \SI{\half}{\oz} Luxardo maraschino liqueur 
+	\item \SI{\half}{\oz} Dolin blanc vermouth
+	\item a couple \si{\dashes} absinthe bitters % EO house blend
+	\end{Ingredients}
+	
+	\begin{Instructions}
+	Stir ingredients with ice, strain into a coupe, and garnish with a lemon
+	twist.
+	\end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\EO]{Nerina}
+	\begin{Ingredients}
+	\item \SI{1}{\oz} Plymouth gin
+	\item \SI{1}{\oz} Meletti amaro
+	\item \SI{1}{\oz} Punt e Mes sweet vermouth
+	\end{Ingredients}
+	
+	\begin{Instructions}
+	Stir ingredients with ice, strain into a coupe, and garnish with an orange
+	twist.
+	\end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\EO]{Proven\c cal}
+	\begin{Ingredients}
+	\item \SI{1\half*}{\oz} lavender-infused Plymouth gin
+	\item \SI{1}{\oz} vermouth de Provence % herbes de provence-infused dry vermouth
+	\item \SI{\half}{\oz} Cointreau
+	\end{Ingredients}
+	
+	\begin{Instructions}
+	Stir ingredients with ice, strain into a coupe, and garnish with an orange
+	twist.
+	\end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\EO*]{Cosmopolitan}
+	\begin{Ingredients}
+	\item \SI{1}{\oz} Meyer lemon vodka
+	\item \SI{\threequarters}{\oz} Cointreau
+	\item \SI{\threequarters}{\oz} cranberry juice
+	\item \SI{\half}{\oz} lime juice
+	\end{Ingredients}
+	
+	\begin{Instructions}
+	Shake ingredients with ice, strain into a coupe, and garnish with an orange
+	twist.
+	\end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\EO*]{Aviation}
+	\begin{Ingredients}
+	\item \SI{1\half*}{\oz} Plymouth gin
+	\item \SI{\half}{\oz} Luxardo maraschino liqueur
+	\item \SI{\threequarters}{\oz} lemon juice
+	\item \SI{\quarter}{\oz} simple syrup
+	\item a \si{\dash} Angostura bitters
+	\end{Ingredients}
+	
+	\begin{Instructions}
+	Shake ingredients with ice, strain into a coupe, and garnish with a lemon
+	wheel and a brandied cherry.
+	\end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\EO*]{The Millionaire}
+	\begin{Ingredients}
+	\item \SI{1\half*}{\oz} bourbon
+	\item \SI{\half}{\oz} Grand Marnier
+	\item 1 egg white
+	\item \SI{\quarter}{\oz} grenadine
+	\item \SI{\quarter}{\oz} lemon juice
+	\item a \si{\rinse} absinthe
+	\end{Ingredients}
+	
+	\begin{Instructions}
+	  Dry shake ingredients except absinthe, shake with ice, strain into an
+	  absinthe-rinsed coupe, and garnish with grated nutmeg.
+	\end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\EO*]{New York Sour}
+	\begin{Ingredients}
+	\item \SI{1\half*}{\oz} rye whiskey
+	\item \SI{\threequarters}{\oz} lemon juice
+	\item \SI{\threequarters}{\oz} simple syrup
+	\item \SI{\threequarters}{\oz} dry red wine (e.g.\ Malbec or Syrah)
+	\end{Ingredients}
+	
+	\begin{Instructions}
+	  Shake ingredients except wine with ice, strain into an ice-filled old
+	  fashioned glass, and float the wine on top.  Garnish with half an orange
+	  wheel and a brandied cherry.
+	\end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\EO*]{Jack Rose}
+  \begin{Ingredients}
+	\item \SI{1\half*}{\oz} Laird's straight apple brandy
+	\item \SI{\threequarters}{\oz} lemon juice
+	\item \SI{\half}{\oz} simple syrup
+	\item \SI{\quarter}{\oz} grenadine
+	\end{Ingredients}
+	
+	\begin{Instructions}
+	Shake ingredients with ice and strain into a coupe.
+	\end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\EO]{Calvados Sidecar}
+	\begin{Ingredients}
+	\item \SI{1}{\oz} Daron Fine calvados
+	\item \SI{1}{\oz} Cointreau
+	\item \SI{1}{\oz} lemon juice
+	\end{Ingredients}
+	
+	\begin{Instructions}
+	  Rim a coupe with superfine sugar with just a dash of cinnamon mixed in
+	  (\SI{4}{\Tbsp} sugar to \SI{\half}{\tsp} cinnamon) and let the glass
+	  chill in the freezer.  Shake other ingredients with ice, strain into the
+	  prepared coupe, and garnish with an orange twist.
+	\end{Instructions}
+\end{Cocktail}
+
+%\begin{Cocktail}[\EO]{Ruby Tuesday}
+%	\begin{Ingredients}
+%	\item requires muddled black cherries---not 'til summer
+%	\end{Ingredients}
+%	
+%	\begin{Instructions}
+%	
+%	\end{Instructions}
+%\end{Cocktail}
+
+\begin{Cocktail}[\EO*]{White Lady}
+	\begin{Ingredients}
+	\item \SI{1\half*}{\oz} Plymouth gin
+	\item \SI{\threequarters}{\oz} Cointreau
+	\item \SI{\threequarters}{\oz} lemon juice
+	\end{Ingredients}
+	
+	\begin{Instructions}
+	  Shake ingredients with ice, strain into a coupe, and garnish with an
+	  orange twist.
+	\end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\EO]{Yellow Jacket}
+	\begin{Ingredients}
+	\item \SI{1\half*}{\oz} Partida reposado tequila
+	\item \SI{\threequarters}{\oz} St.\ Germain
+	\item \SI{\half}{\oz} yellow Chartreuse
+	\item a \si{\dash} orange bitters
+	\end{Ingredients}
+	
+	\begin{Instructions}
+	  Stir ingredients with ice, strain into a coupe, and garnish with a lemon
+	  twist.
+	\end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\EO*]{Widow's Kiss}
+	\begin{Ingredients}
+	\item \SI{1}{\oz} Daron Fine calvados
+	\item \SI{\threequarters}{\oz} yellow Chartreuse
+	\item \SI{\threequarters}{\oz} B\'en\'edictine
+	\item a \si{\dash} Angostura bitters
+	\end{Ingredients}
+	
+	\begin{Instructions}
+	  Stir ingredients with ice, strain into a coupe, and garnish with a lemon
+	  twist.
+	\end{Instructions}
 \end{Cocktail}
 
 \end{document}
