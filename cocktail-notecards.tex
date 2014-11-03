@@ -1,5 +1,9 @@
 \documentclass[oneside,10pt,makeindex]{article}
 
+% you should also use this, like, all the time -- see
+% http://tex.stackexchange.com/questions/664/why-should-i-use-usepackaget1fontenc
+\usepackage[T1]{fontenc}
+
 \usepackage{xspace} % you should use this one, like, all the time
 
 \usepackage[paperwidth=6in,paperheight=4in,margin=0.5in]{geometry}
@@ -473,6 +477,13 @@
 
 %%%% Chaya Brasserie %%%%
 \NewSource{Chaya}{Chaya}{\StarLogo{Chaya}}
+
+%%%% Vintage Spirits and Forgotten Cocktails, 2nd Ed. -- Ted "Dr. Cocktail"
+%%%% Haigh %%%%
+% the textcomp package provides the \textrecipe symbol, i.e. the Rx
+% prescription symbol
+% textsl seems like it's about as good as it's going to get
+\NewSource{VSFC}{\textsl{\textrecipe}}{\StarLogo{\textsl{\textrecipe}}}
 
 
 \begin{document}
@@ -3524,6 +3535,24 @@
   \begin{Instructions}
     Shake ingredients except absinthe with ice, strain into an absinthe-rinsed
     coupe, and garnish with a lemon wheel.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\VSFC]{Blue Moon}
+  \begin{Ingredients}
+    \item \SI{1\half*}{\oz} London dry gin
+    \item \SI{\half}{\oz} cr\`eme de violette
+    \item \SI{\half}{\oz} lemon juice
+    \item 1~egg white
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Dry shake ingredients, then shake with ice, strain into a coupe, garnish
+    with a lemon twist.
+
+    The standard \InlineCocktail*{Blue Moon} foregoes the egg white, but I
+    think egg whites are underappreciated and under-utilized, and no less than
+    Dr.\ Cocktail himself suggests this variation.
   \end{Instructions}
 \end{Cocktail}
 
