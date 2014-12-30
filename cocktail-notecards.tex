@@ -336,19 +336,10 @@
 \newcommand\yields[1]{\par\smallskip{\sl Yields #1}}
 
 \newcommand\BookTitle[1]{\textit{#1}}
+\newcommand\MovieTitle[1]{\textit{#1}}
 
 %%%%%%%%%%%%%%%%% where logos for sources are defined %%%%%%%%%%%%%%%%%
 \newcommand\Attribution[1]{\raisebox{2ex}[0pt][0pt]{#1}}
-
-
-%%%% The H Bar (i.e. my bar/the Fantabulon! house bar) %%%%
-\newcommand\HBarLogo{\makebox{\includegraphics[keepaspectratio=true,%
-    height=11pt]%
-    {./media/the-hbar-logo/the-hbar-logo.pdf}%
-  }%
-}
-
-\newcommand\HBar{\Attribution{\HBarLogo}}
 
 %%%% alternate recipes of cocktails I've already transcribed %%%%
 \newcounter{AltCocktail}
@@ -378,12 +369,32 @@
 
 \newcommand\StarLogo[1]{#1\textsuperscript{*}}
 
+%%%% The H Bar (i.e. my bar/the Fantabulon! house bar) %%%%
+\newcommand\HBarLogo{\makebox{\includegraphics[keepaspectratio=true,%
+    height=11pt]%
+    {./media/the-hbar-logo/the-hbar-logo.pdf}%
+  }%
+}
+
+% \newcommand\HBar{\Attribution{\HBarLogo}}
+\NewSource{HBar}{\HBarLogo}{\HBarLogo\raisebox{0.75ex}[0pt][0pt]%
+  {\,\textsuperscript{*}}}
+
 %%%% cocktails found on the web %%%%
 \newcommand\websymbol{\MVAt}
 \DefineFNsymbols*{web}{\websymbol}
 \DefineFNsymbols*{lamportnostar}[math]{\dagger\ddagger\S\P\|{\dagger\dagger}{\ddagger\ddagger}}
 % \setfnsymbol{lamportnostar}
-\newcommand\web[2][]{\Attribution{\large\websymbol}%
+
+% \makeatletter
+\newcommand\web[2][]{\Attribution{\large\websymbol%
+    % not having luck with this \@ifstar stuff working as expected---it's
+    % putting the star on the footnote @ and the footnote after the @ in the
+    % upper right
+    % \@ifstar%
+    % {\textsuperscript{*}}%
+    % {}%
+  }%
   \setfnsymbol{web}%
   \footnotetext[1]{\url{#2}%
     \ifstrempty{#1}%
@@ -392,6 +403,7 @@
   }%
   \setfnsymbol{lamport*}%
 }
+% \makeatother
 
 %% note that the H Bar doesn't have starred cocktails because if they were
 %% going to be starred, they'd be cited elsewhere
@@ -483,8 +495,11 @@
 % the textcomp package provides the \textrecipe symbol, i.e. the Rx
 % prescription symbol
 % textsl seems like it's about as good as it's going to get
-\NewSource{VSFC}{\textsl{\textrecipe}}{\StarLogo{\textsl{\textrecipe}}}
+\NewSource{Haigh}{\textsl{\textrecipe}}{\StarLogo{\textsl{\textrecipe}}}
 
+%%%% Dale DeGroff (probably The Craft of the the Cocktail)
+% \reflectbox is from graphicx package
+\NewSource{DeGroff}{\reflectbox{D}DG}{\StarLogo{\reflectbox{D}DG}}
 
 \begin{document}
 
@@ -3538,7 +3553,7 @@
   \end{Instructions}
 \end{Cocktail}
 
-\begin{Cocktail}[\VSFC]{Blue Moon}
+\begin{Cocktail}[\Haigh]{Blue Moon}
   \begin{Ingredients}
     \item \SI{1\half*}{\oz} London dry gin
     \item \SI{\half}{\oz} cr\`eme de violette
@@ -3572,6 +3587,268 @@
     for more than just its name---it gives the drink a much more interesting
     flavor than just vodka.
   \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\Savoy]{Blood and Sand}
+  \begin{Ingredients}
+    \item \SI{\threequarters}{\oz} scotch\footnote{Something sweet and blended
+        like Famous Grouse works well.}
+    \item \SI{\threequarters}{\oz} cherry brandy\footnote{Cherry Heering is
+        the traditional choice, although Cherry Kijafa may work, too.}
+    \item \SI{\threequarters}{\oz} Italian (sweet) vermouth
+    \item \SI{\threequarters}{\oz} orange juice
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Shake ingredients with ice, and strain into a coupe.
+
+    Some recipes call for a cherry garnish, and others call for blood orange
+    juice, but this is the original.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\Savoy]{Block and Fall}
+  \begin{Ingredients}
+    \item \SI{1}{\oz} brandy
+    \item \SI{1}{\oz} Cointreau
+    \item \SI{\half}{\oz} Calvados
+    \item \SI{\half}{\oz} anisette or absinthe
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Stir ingredients with ice, and strain into a coupe.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\HBar]{Blast Off!}
+  \begin{Ingredients}
+    \item \SI{1\half*}{\oz} tequila reposado
+    \item \SI{1}{\oz} vodka
+    \item \SI{\half}{\oz} sweet vermouth
+    \item a heaping barspoon of Tang!
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Dry shake ingredients except sweet vermouth to dissolve Tang!, then shake
+    with ice, strain into a coupe, pour in sweet vermouth, and garnish with an
+    orange twist.
+
+    This cocktail is a little more of a novelty than I'd normally offer, but
+    it's simple and gets you drunk faster than the ever-popular
+    \InlineCocktail*{Paloma}.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\DeGroff]{Apricot Cocktail}
+  \begin{Ingredients}
+    \item \SI{1}{\oz} London dry gin
+    \item \SI{\threequarters}{\oz} apricot brandy
+    \item \SI{1}{\oz} orange juice
+    \item \SI{\half}{\oz} lemon juice
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Shake ingredients with ice, strain into a coupe, and garnish with a cherry
+    and a flamed orange peel.
+  \end{Instructions}  
+\end{Cocktail}
+
+\begin{Cocktail}[\TraderVics*]{Rock and Roll}
+  \begin{Ingredients}
+    \item \SI{\threequarters}{\oz} pisco
+    \item \SI{\threequarters}{\oz} apricot brandy
+    \item \SI{2}{\oz} champagne
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Shake (yes, shake) pisco and apricot brandy with ice, strain into a coupe,
+    top with champagne, and garnish with a thin lemon slice in the drink, not
+    on the rim.
+  \end{Instructions}  
+\end{Cocktail}
+
+\begin{Cocktail}[\TraderVics*]{Old Fashioned}
+  \begin{Ingredients}
+    \item \SI{1\half*}{\oz} bourbon
+    \item \SI{\half}{\oz} water
+    \item a~\si{\dash} Angostura bitters
+    \item 1~sugar cube
+  \end{Ingredients}
+
+  \begin{Instructions}\small
+    Place the sugar cube in an old fashioned glass, soak the cube with bitters,
+    add the water, and muddle. Fill the glass with ice cubes, add the bourbon,
+    and garnish with a lemon twist and a cherry.
+
+    \BookTitle{The Trader Vic's Bartender's Guide} actually offered up four
+    versions of the \InlineCocktail*{Old Fashioned} (and said there are more
+    variations ``than there are waves in the ocean''), but this version, the
+    first, seems to be the most traditional.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\TraderVics*]{Manhattan}
+  \begin{Ingredients}
+    \item \SI{2}{\oz} rye whiskey
+    \item \SI{1}{\oz} sweet vermouth
+    \item 2~\si{\dashes} Angostura bitters
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Stir ingredients with ice, strain into a coupe, and garnish with a cherry.
+
+    This is one of a few variations found in \BookTitle{The Trader Vic's
+      Bartender's Guide}, and it also seems like the most traditional.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\TraderVics*]{Orleanian}
+  \begin{Ingredients}
+    \item \SI{2}{\oz} rye whiskey
+    \item \SI{\quarter}{\oz} absinthe or Herbsaint
+    \item \SI{\quarter}{\oz} simple syrup
+    \item 2~\si{\dashes} Peychaud's bitters
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Shake ingredients with ice, strain into a coupe, and garnish with a lemon
+    peel.
+
+    The original recipe just calls for ``bitters,'' so you're free to
+    experiment, although Peychaud's seems like the most Orleanian
+    choice. Angostura, Abbott's, or some other classic bitters formula would
+    likely also work.
+  \end{Instructions}  
+\end{Cocktail}
+
+\begin{Cocktail}[\DeGroff*]{Brooklyn}
+  \begin{Ingredients}
+    \item \SI{2}{\oz} Canadian Club whiskey
+    \item \SI{1}{\oz} dry vermouth
+    \item a~\si{\dash} maraschino liqueur
+    \item a~\si{\dash} Amer Picon or Torani Amer
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Shake ingredients with ice, strain into a coupe, and garnish with a lemon
+    peel.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[{\web[2014-12-29]{http://www.seriouseats.com/recipes/2011/02/the-brooklyn-cocktail-rye-maraschino-vermouth.html}}]{Brooklyn}
+  \begin{Ingredients}
+    \item \SI{2}{\oz} rye whiskey
+    \item \SI{1}{\oz} dry vermouth
+    \item \SI{\quarter}{\oz} Luxardo maraschino liqueur
+    \item \SI{\quarter}{\oz} Amer Picon or Torani Amer
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Stir ingredients with ice, and strain into a coupe.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\DeGroff*]{Brown Derby}
+  \begin{Ingredients}
+    \item \SI{2}{\oz} bourbon
+    \item \SI{1}{\oz} grapefruit
+    \item \SI{\half}{\oz} honey syrup
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Shake ingredients with ice, and strain into a coupe.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\DeGroff*]{Nick and Nora Martini}
+  \begin{Ingredients}
+    \item \SI{1\half*}{\oz} London dry gin
+    \item \SI{\half}{\oz} dry vermouth
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Stir ingredients with ice, strain into a coupe, and garnish with an olive.
+
+    This is closer to how \InlineCocktail*{Martinis} were served 1940s. The
+    name comes from the characters Nick and Nora Charles from \MovieTitle{The
+      Thin Man}.
+  \end{Instructions}  
+\end{Cocktail}
+
+\begin{Cocktail}[\HBar*]{Martini}
+  \begin{Ingredients}
+    \item \SI{2}{\oz} gin
+    \item \SI{\half}{\oz} dry vermouth
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Stir ingredients with ice, strain into a coupe, and garnish with a lemon
+    twist.
+
+    There are almost infinitely many ways to vary this. The gin should vary
+    based on the drinker's preference, as can the amount of and type(s) of
+    vermouth used. A dash of Angostura is not an unreasonable addition either.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[{\web[2014-12-30]{http://cocktails.about.com/od/cocktailrecipes/r/sweet_cty.htm}}]{Sweet City}
+  \begin{Ingredients}
+    \item \SI{1\half*}{\oz} genever
+    \item \SI{\threequarters}{\oz} Rothman \& Winter Orchard Apricot
+    \item \SI{\threequarters}{\oz} sweet vermouth
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Stir ingredients with ice, strain into a coupe, and garnish with an orange
+    twist.
+
+    The original recipe called for a $1:1:1$ ratio, but I think a $2:1:1$ ratio
+    makes for a more interesting and satisfying drink.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\TraderVics*]{Daiquiri}
+  \begin{Ingredients}
+    \item \SI{1}{\oz} light Puerto Rican rum
+    \item \SI{\threequarters}{\oz} lime juice\footnote{\,``Juice of 1~lime.''}
+    \item \SI{\quarter}{\oz} maraschino liqueur
+    \item \SI{\quarter}{\oz} simple syrup
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Shake ingredients with ice, strain into a coupe, garnish with a thin lime
+    slice.
+  \end{Instructions}
+\end{Cocktail}
+
+\begin{Cocktail}[\DeGroff*]{Daiquiri}
+  \begin{Ingredients}
+    \item \SI{1\half*}{\oz} light rum
+    \item \SI{1}{\oz} simple syrup
+    \item \SI{\threequarters}{\oz} lime juice
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Shake ingredients with ice, and strain into a coupe.
+  \end{Instructions}  
+\end{Cocktail}
+
+\begin{Cocktail}[\DeGroff*]{Hemingway Daiquiri}
+  \begin{Ingredients}
+    \item \SI{1\half*}{\oz} white rum
+    \item \SI{\quarter}{\oz} maraschino liqueur
+    \item \SI{\threequarters}{\oz} lime juice
+    \item \SI{\half}{\oz} grapefruit juice
+    \item \SI{\quarter}{\oz} simple syrup
+  \end{Ingredients}
+
+  \begin{Instructions}
+    Shake ingredients with ice, and strain into a coupe.
+
+    This drink is also known as the \InlineCocktail*{Papa Doble} or Papa's
+    Double. It was originally without sugar, but that's a little too tart for
+    most people's taste, and the ratios can be slightly adjusted accordingly.
+  \end{Instructions}  
 \end{Cocktail}
 
 \end{document}
